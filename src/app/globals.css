@@ -10,10 +10,10 @@
 }
 @layer base {
   html {
-    @apply scroll-smooth bg-canvas text-ink antialiased;
+    @apply scroll-smooth bg-canvas text-ink antialiased overflow-x-hidden;
   }
   body {
-    @apply font-sans;
+    @apply font-sans overflow-x-hidden;
   }
   section[id],
   footer[id],
@@ -32,7 +32,7 @@
 }
 @layer components {
   .wrap {
-    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-10 lg:px-16;
+    @apply mx-auto w-full max-w-[1400px] px-4 sm:px-8 md:px-10 lg:px-16;
   }
   .eyebrow {
     @apply flex items-center gap-2.5 text-[11px] font-semibold tracking-[.15em] uppercase text-copy;
@@ -42,10 +42,10 @@
     @apply h-[2px] w-6 bg-primary;
   }
   .heading {
-    @apply text-4xl leading-[1.04] font-semibold tracking-[-.055em] text-balance md:text-5xl lg:text-6xl;
+    @apply text-3xl leading-[1.08] font-semibold tracking-[-.055em] text-balance sm:text-4xl md:text-5xl lg:text-6xl;
   }
   .action {
-    @apply inline-flex min-h-11 items-center justify-center gap-3 whitespace-nowrap rounded-lg px-3.5 sm:px-5 py-3 text-sm font-semibold transition active:scale-[.98];
+    @apply inline-flex min-h-11 items-center justify-center gap-2.5 rounded-lg px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold transition active:scale-[.98];
   }
   .action-dark {
     @apply bg-ink text-white hover:bg-ink/85;

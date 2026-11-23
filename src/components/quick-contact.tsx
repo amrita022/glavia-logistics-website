@@ -18,8 +18,8 @@ export function QuickContact() {
   };
 
   return (
-    <section id="contact" className="border-t border-panel/80 bg-ink py-16 text-canvas md:py-24">
-      <div className="wrap grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16 items-start">
+    <section id="contact" className="border-t border-panel/80 bg-ink py-14 text-canvas sm:py-16 md:py-24">
+      <div className="wrap grid gap-8 sm:gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16 items-start">
         {/* Left Column: Direct Contact & Office Details */}
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
@@ -76,7 +76,7 @@ export function QuickContact() {
         </div>
 
         {/* Right Column: Interactive Quick Inquiry Card */}
-        <div className="rounded-2xl border border-panel/25 bg-white/8 p-6 backdrop-blur-md sm:p-8">
+        <div className="rounded-2xl border border-panel/25 bg-white/8 p-5 backdrop-blur-md sm:p-7 md:p-8">
           <div className="flex items-center justify-between border-b border-panel/15 pb-4">
             <h3 className="text-lg font-bold text-white">
               Send a Shipment Inquiry

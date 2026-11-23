@@ -248,8 +248,8 @@ export function ModeComparison() {
             </div>
 
             {/* Featured Mode Showcase Card */}
-            <div className="rounded-2xl border border-panel bg-white p-6 shadow-sm sm:p-8 lg:p-9 transition-all">
-              <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+            <div className="rounded-2xl border border-panel bg-white p-5 shadow-sm sm:p-8 lg:p-9 transition-all">
+              <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.2fr_1fr]">
                 {/* Left Column: Details & Checkpoints */}
                 <div>
                   <div className="flex flex-wrap items-center gap-2.5">

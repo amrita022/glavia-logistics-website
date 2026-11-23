@@ -98,27 +98,27 @@ export function GatewaysShowcase() {
           </div>
         </div>
 
-        {/* Gateway Navigation Tabs */}
-        <div className="mt-10 flex flex-wrap gap-2 border-b border-panel/80 pb-4">
+        {/* Gateway Navigation Tabs - Responsive Scroll on Mobile */}
+        <div className="mt-8 flex items-center gap-2 border-b border-panel/80 pb-3 overflow-x-auto sm:flex-wrap sm:pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {gateways.map((g, i) => (
             <button
               key={g.id}
               onClick={() => setActiveTab(i)}
               className={
-                "flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold transition-all sm:text-sm " +
+                "flex shrink-0 items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all sm:px-4 sm:py-2.5 sm:text-sm " +
                 (i === activeTab
                   ? "bg-ink text-white shadow-xs"
                   : "bg-white/80 text-copy hover:bg-white hover:text-ink border border-panel/70")
               }
             >
               <g.icon size={16} />
-              {g.name}
+              <span>{g.name}</span>
             </button>
           ))}
         </div>
 
         {/* Selected Gateway Detail Card */}
-        <div className="mt-8 grid gap-8 rounded-2xl border border-panel bg-white p-6 shadow-sm md:p-10 lg:grid-cols-[1.3fr_1fr]">
+        <div className="mt-6 sm:mt-8 grid gap-6 sm:gap-8 rounded-2xl border border-panel bg-white p-5 sm:p-7 md:p-10 lg:grid-cols-[1.3fr_1fr]">
           <div className="flex flex-col justify-between">
             <div>
               <span className="inline-block rounded-md bg-panel/40 px-2.5 py-1 text-xs font-semibold text-copy uppercase tracking-wider">

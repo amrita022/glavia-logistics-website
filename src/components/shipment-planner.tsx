@@ -319,7 +319,7 @@ export function ShipmentPlanner() {
             <div className="mt-8 border-t border-panel/60 pt-6">
               <a
                 href={enquiry(enquirySubject)}
-                className="action action-dark w-full text-center"
+                className="action action-dark w-full text-center text-xs sm:text-sm px-3.5 sm:px-5 py-3"
               >
                 Request tailored quote for this route <ArrowRight size={16} />
               </a>

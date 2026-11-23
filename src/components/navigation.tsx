@@ -54,13 +54,13 @@ export function Navigation() {
         {/* Center Desktop Navigation Links */}
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-1 md:flex"
+          className="hidden items-center gap-0.5 md:flex lg:gap-1"
         >
           {links.map(([label, id]) => (
             <a
               key={id}
               href={"#" + id}
-              className="rounded-full px-3.5 py-1.5 text-xs font-semibold text-copy transition-all hover:bg-panel/40 hover:text-ink active:scale-95"
+              className="rounded-full px-2.5 lg:px-3.5 py-1.5 text-xs font-semibold text-copy transition-all hover:bg-panel/40 hover:text-ink active:scale-95"
             >
               {label}
             </a>
@@ -94,7 +94,7 @@ export function Navigation() {
         id="mobile-nav"
         aria-label="Mobile navigation"
         hidden={!open}
-        className="pointer-events-auto mx-auto mt-2 max-w-sm rounded-3xl border border-panel/80 bg-white/95 p-4 shadow-xl shadow-ink/10 backdrop-blur-2xl ring-1 ring-black/5 md:hidden"
+        className="pointer-events-auto mx-auto mt-2 max-w-sm w-full rounded-3xl border border-panel/80 bg-white/95 p-4 shadow-xl shadow-ink/10 backdrop-blur-2xl ring-1 ring-black/5 md:hidden"
       >
         <div className="grid gap-1">
           {links.map(([label, id]) => (

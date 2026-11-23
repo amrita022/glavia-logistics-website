@@ -85,11 +85,11 @@ export function CaseStudies() {
               </div>
 
               <div className="mt-6 border-t border-panel/50 pt-4">
-                <div className="grid grid-cols-3 gap-2 text-center">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
                   {s.metrics.map((m) => (
-                    <div key={m.label} className="rounded-lg bg-canvas p-2">
-                      <div className="text-[10px] text-copy">{m.label}</div>
-                      <div className="mt-0.5 text-xs font-bold text-ink sm:text-sm">
+                    <div key={m.label} className="rounded-lg bg-canvas p-1.5 sm:p-2">
+                      <div className="text-[9px] sm:text-[10px] text-copy leading-tight truncate">{m.label}</div>
+                      <div className="mt-0.5 text-[11px] sm:text-xs md:text-sm font-bold text-ink leading-tight break-words">
                         {m.val}
                       </div>
                     </div>

@@ -75,7 +75,7 @@ export default function Home() {
                   id={s.id}
                   className={
                     "group flex flex-col justify-between rounded-xl border border-panel/75 bg-canvas/40 p-4.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/80 hover:bg-white hover:shadow-xs " +
-                    (i === 4 ? "sm:col-span-2 lg:col-span-1" : "")
+                    (i === 4 ? "sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full lg:max-w-none lg:mx-0 lg:col-span-1" : "")
                   }
                 >
                   <div>

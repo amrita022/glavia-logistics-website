@@ -42,20 +42,20 @@ export function MetricsStrip() {
   return (
     <section aria-label="Operational credentials and key statistics" className="border-b border-panel/70 bg-white/70 backdrop-blur-md">
       {/* Live Hubs Ticker Bar */}
-      <div className="border-b border-panel/40 bg-panel/20 py-2.5 text-xs text-copy">
-        <div className="wrap flex flex-wrap items-center justify-between gap-3">
+      <div className="border-b border-panel/40 bg-panel/20 py-2 sm:py-2.5 text-xs text-copy">
+        <div className="wrap flex flex-wrap items-center justify-between gap-2 sm:gap-3">
           <div className="flex items-center gap-2 font-medium text-ink">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            <span className="font-semibold uppercase tracking-wider text-[11px] text-ink">Live Gateway Pulse:</span>
+            <span className="font-semibold uppercase tracking-wider text-[10px] sm:text-[11px] text-ink">Live Gateway Pulse:</span>
           </div>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <div className="flex flex-wrap items-center gap-x-3.5 sm:gap-x-5 gap-y-1 text-[11px] sm:text-xs">
             {liveHubs.map((hub) => (
-              <span key={hub.name} className="flex items-center gap-1.5">
+              <span key={hub.name} className="flex items-center gap-1">
                 <span className="font-semibold text-ink">{hub.name}</span>
-                <span className="text-copy/80">({hub.status})</span>
+                <span className="text-copy/70">({hub.status})</span>
               </span>
             ))}
           </div>
@@ -66,12 +66,12 @@ export function MetricsStrip() {
       </div>
 
       {/* 4 Pillars Grid */}
-      <div className="wrap py-10 sm:py-12">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="wrap py-8 sm:py-12">
+        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {metrics.map((m) => (
             <div
               key={m.label}
-              className="group flex flex-col justify-between rounded-2xl border border-panel/60 bg-canvas/60 p-6 transition-all hover:border-primary hover:bg-white hover:shadow-sm"
+              className="group flex flex-col justify-between rounded-2xl border border-panel/60 bg-canvas/60 p-5 sm:p-6 transition-all hover:border-primary hover:bg-white hover:shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between">

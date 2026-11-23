@@ -9,6 +9,9 @@ import {
 import { Brand } from "../components/brand";
 import { Navigation } from "../components/navigation";
 import { Hero } from "../components/hero";
+import { MetricsStrip } from "../components/metrics-strip";
+import { ShipmentPlanner } from "../components/shipment-planner";
+import { GatewaysShowcase } from "../components/gateways-showcase";
 import { Faq } from "../components/faq";
 import { email, enquiry, services } from "../lib/company";
 
@@ -38,6 +41,7 @@ export default function Home() {
       <Navigation />
       <main id="main" tabIndex={-1}>
         <Hero />
+        <MetricsStrip />
         <section id="services" className="bg-white/70 py-16 md:py-24">
           <div className="wrap">
             <p className="eyebrow">Our services</p>
@@ -84,6 +88,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <ShipmentPlanner />
         <section id="about" className="bg-panel/55 py-16 md:py-24">
           <div className="wrap grid gap-10 lg:grid-cols-2 lg:gap-20">
             <div>
@@ -139,6 +144,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <GatewaysShowcase />
         <section id="process" className="wrap py-16 md:py-24">
           <p className="eyebrow">Our process</p>
           <h2 className="heading mt-4">How we work with you.</h2>
@@ -216,6 +222,8 @@ export default function Home() {
             {[
               ["About", "about"],
               ["Our process", "process"],
+              ["Shipment planner", "planner"],
+              ["Trade gateways", "gateways"],
               ["FAQ", "faq"],
               ["Contact", "contact"],
             ].map(([n, id]) => (

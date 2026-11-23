@@ -1,6 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="air-title">
 <title id="air-title">Ground crew load a parcel into a cargo aircraft before a service van clears the apron and the plane takes off.</title>
-<defs><linearGradient id="engine" x1="0" y1="0" x2="0.3" y2="1"><stop stop-color="#e6f0fa"/><stop offset=".36" stop-color="#b3d1ef"/><stop offset="1" stop-color="#6f93b2"/></linearGradient></defs>
+<defs><linearGradient id="engine" x1="0" y1="0" x2="0.3" y2="1"><stop stop-color="#e6f0fa"/><stop offset=".36" stop-color="#b3d1ef"/><stop offset="1" stop-color="#6f93b2"/></linearGradient>
+  <g id="ld3-container">
+    <!-- Air cargo LD3 container with angled cut corner -->
+    <polygon points="12,5 0,11 -12,5 0,-1" fill="#cfd8dc" stroke="#78909c" stroke-width=".4"/>
+    <polygon points="-12,5 0,11 0,18 -12,12" fill="#90a4ae"/>
+    <polygon points="0,11 12,5 12,12 0,18" fill="#b0bec5"/>
+    <!-- Angled cutout on side -->
+    <polygon points="-10,7 -3,10 -3,16 -10,12" fill="#607d8b"/>
+  </g>
+
+</defs>
 <style>
 /* A single apron turnaround. All actor timings are percentages of this clock. */
 :root { --turnaround: 22s; }
@@ -243,7 +253,20 @@ polygon { stroke:#344a61;stroke-width:.57;stroke-linejoin:round;paint-order:stro
  100% {transform:rotate(0deg)}
  100% {transform:rotate(0)} }
 .paused * {animation-play-state:paused!important}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}.crew-a{transform:translate(450px,214px)}.crew-b{transform:translate(425px,164px)}.load{transform:translate(444px,204px)}}</style>
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.crew-a{transform:translate(450px,214px)}.crew-b{transform:translate(425px,164px)}.load{transform:translate(444px,204px)}}
+.tarmac-tug-train { animation: tug-circuit 20s linear infinite; transform-origin: 0 0 }
+@keyframes tug-circuit {
+  0% { transform: translate(-80px, 260px) }
+  100% { transform: translate(520px, -20px) }
+}
+.airfield-beacon { animation: flash-beacon 1.5s infinite }
+@keyframes flash-beacon { 0%, 25%, 100% { opacity: .2 } 12% { opacity: 1 } }
+.radar-dish-air { animation: spin-dish 3s linear infinite; transform-origin: 620px 48px }
+@keyframes spin-dish { 0% { transform: scaleX(1) } 50% { transform: scaleX(-1) } 100% { transform: scaleX(1) } }
+.taxi-light { animation: pulse-taxi 2s ease-in-out infinite alternate }
+@keyframes pulse-taxi { from { opacity: .35 } to { opacity: .95 } }
+
+</style>
 <!-- Apron and terminal -->
 <g transform="translate(-50 245)"><polyline points="0,0 82,37.72" stroke="#fff" stroke-width="2.2" stroke-linecap="round" /><polyline points="-56.96,31.36 25.04,69.08" stroke="#fff" stroke-width="2.2" stroke-linecap="round" /></g>
 <g transform="translate(102 245)"><polyline points="0,0 82,37.72" stroke="#fff" stroke-width="2.2" stroke-linecap="round" /><polyline points="-56.96,31.36 25.04,69.08" stroke="#fff" stroke-width="2.2" stroke-linecap="round" /></g>
@@ -305,4 +328,51 @@ polygon { stroke:#344a61;stroke-width:.57;stroke-linejoin:round;paint-order:stro
  <g fill="#a9b9c7"><ellipse cx="-.2" cy="-.4" rx="1.3" ry="1.7"/><ellipse cx="21" cy="9.4" rx="1.3" ry="1.7"/></g>
  <path d="m7-12.6 2.3-1.3 4.2 1.9-2.3 1.3Z" fill="#e59e2d"/><path d="m7-12.6 4.2 1.9v1.6L7-11Z" fill="#d88d21"/>
  </g></g></g>
+
+  <!-- Airfield Radar Tower -->
+  <g transform="translate(620 48)">
+    <polygon points="-2,45 2,45 1,8 -1,8" fill="#607d8b" stroke="#37474f" stroke-width=".5"/>
+    <line x1="0" y1="8" x2="0" y2="-2" stroke="#263238" stroke-width="1.2"/>
+    <line class="radar-dish-air" x1="-5" y1="2" x2="5" y2="2" stroke="#1e2832" stroke-width="1.8" stroke-linecap="round"/>
+    <circle class="airfield-beacon" cx="0" cy="-3" r="1.5" fill="#f44336"/>
+  </g>
+
+  <!-- Taxiway Centerline Guidance Lights -->
+  <g class="taxi-light">
+    <circle cx="140" cy="220" r="1.5" fill="#00e676"/>
+    <circle cx="185" cy="200" r="1.5" fill="#00e676"/>
+    <circle cx="230" cy="180" r="1.5" fill="#00e676"/>
+    <circle cx="275" cy="160" r="1.5" fill="#00e676"/>
+    <circle cx="320" cy="140" r="1.5" fill="#00e676"/>
+  </g>
+
+  <!-- Tarmac Cargo Tug with LD3 Container Dollies -->
+  <g class="tarmac-tug-train">
+    <!-- Tug tractor -->
+    <polygon points="-8,3 6,-4 14,0 0,7" fill="#ffb300" stroke="#b26a00" stroke-width=".4"/>
+    <polygon points="-8,3 0,7 0,11 -8,7" fill="#f57c00"/>
+    <polygon points="0,7 14,0 14,4 0,11" fill="#e65100"/>
+    <ellipse cx="-4" cy="6" rx="1.6" ry="2.6" fill="#212121"/>
+    <ellipse cx="8" cy="3" rx="1.6" ry="2.6" fill="#212121"/>
+    <circle cx="3" cy="-1" r="1" fill="#ff9100"/>
+    <!-- Hitch line -->
+    <line x1="-8" y1="5" x2="-14" y2="8" stroke="#37474f" stroke-width="1"/>
+    <!-- Dolly 1 with LD3 Container -->
+    <g transform="translate(-24 12)">
+      <polygon points="-8,4 8,-4 14,-1 -2,7" fill="#78909c"/>
+      <ellipse cx="-4" cy="5" rx="1.3" ry="2" fill="#212121"/>
+      <ellipse cx="8" cy="-1" rx="1.3" ry="2" fill="#212121"/>
+      <use href="#ld3-container" x="0" y="-8"/>
+    </g>
+    <!-- Hitch line -->
+    <line x1="-32" y1="16" x2="-38" y2="19" stroke="#37474f" stroke-width="1"/>
+    <!-- Dolly 2 with LD3 Container -->
+    <g transform="translate(-48 24)">
+      <polygon points="-8,4 8,-4 14,-1 -2,7" fill="#78909c"/>
+      <ellipse cx="-4" cy="5" rx="1.3" ry="2" fill="#212121"/>
+      <ellipse cx="8" cy="-1" rx="1.3" ry="2" fill="#212121"/>
+      <use href="#ld3-container" x="0" y="-8"/>
+    </g>
+  </g>
+
 </svg>

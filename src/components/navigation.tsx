@@ -14,7 +14,7 @@ export function Navigation() {
   const toggle = useRef<HTMLButtonElement>(null);
   return (
     <header
-      className="relative z-20 border-b border-panel/80 bg-canvas"
+      className="sticky top-0 z-30 border-b border-panel/60 bg-canvas/85 backdrop-blur-md transition-colors"
       onKeyDown={(e) => {
         if (open && e.key === "Escape") {
           setOpen(false);

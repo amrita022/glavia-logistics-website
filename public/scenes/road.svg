@@ -1,4 +1,4 @@
-<svg viewBox="0 0 690 300" role="img" aria-label="Warehouse loading bays, delivery trucks, a forklift and workers carrying cargo" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 690 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Warehouse loading bays, delivery trucks, a forklift and workers carrying cargo" xmlns="http://www.w3.org/2000/svg">
   <title>A loader carries a parcel into an open delivery truck before it drives away.</title>
   <style>
 polygon { stroke: #344a61; stroke-width: .57; stroke-linejoin: round; paint-order: stroke fill }

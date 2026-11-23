@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 300" role="img" aria-labelledby="air-title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="air-title">
 <title id="air-title">Ground crew load a parcel into a cargo aircraft before a service van clears the apron and the plane takes off.</title>
 <defs><linearGradient id="engine" x1="0" y1="0" x2="0.3" y2="1"><stop stop-color="#e6f0fa"/><stop offset=".36" stop-color="#b3d1ef"/><stop offset="1" stop-color="#6f93b2"/></linearGradient></defs>
 <style>

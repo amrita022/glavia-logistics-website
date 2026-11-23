@@ -70,7 +70,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative flex min-h-[calc(100svh-74px)] md:min-h-[calc(100svh-84px)] min-h-[640px] lg:min-h-[740px] xl:min-h-[820px] flex-col justify-between overflow-hidden bg-canvas"
+      className="relative flex min-h-[108svh] min-h-[740px] sm:min-h-[800px] lg:min-h-[880px] xl:min-h-[960px] flex-col justify-between overflow-hidden bg-canvas"
     >
       {/* 1. Full-bleed Animated Logistics Background */}
       <div
@@ -106,7 +106,7 @@ export function Hero() {
         </AnimatePresence>
 
         {/* Ambient readability overlay: soft radial glow behind text to guarantee contrast without concealing the port animation */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_38%,rgba(243,247,255,0.85)_0%,rgba(243,247,255,0.65)_50%,rgba(243,247,255,0.15)_85%,transparent_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_42%,rgba(243,247,255,0.85)_0%,rgba(243,247,255,0.65)_50%,rgba(243,247,255,0.15)_85%,transparent_100%)]" />
 
         {/* Subtle top fade for smooth header continuity */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-canvas/90 via-canvas/40 to-transparent" />
@@ -116,14 +116,10 @@ export function Hero() {
       </div>
 
       {/* 2. Original Text Content, Typography & Positioning */}
-      <div className="wrap relative z-10 flex flex-col items-center pt-12 text-center md:pt-16">
-        <p className="flex items-center gap-2.5 text-[10px] font-semibold tracking-[.17em] text-copy uppercase sm:text-xs">
-          <span className="h-2 w-2 rounded-sm bg-primary ring-1 ring-ink/20" />
-          Freight forwarding & customs clearance
-        </p>
+      <div className="wrap relative z-10 flex flex-col items-center pt-32 sm:pt-36 md:pt-44 text-center">
         <h1
           id="hero-title"
-          className="mt-5 text-[clamp(2.2rem,5.5vw,5.5rem)] leading-[.99] font-semibold tracking-[-.07em]"
+          className="text-[clamp(2.2rem,5.5vw,5.5rem)] leading-[.99] font-semibold tracking-[-.07em]"
         >
           Connecting markets.
           <br />

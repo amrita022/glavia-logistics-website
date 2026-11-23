@@ -7,6 +7,7 @@ const links = [
   ["Services", "services"],
   ["Planner", "planner"],
   ["Gateways", "gateways"],
+  ["Comparison", "comparison"],
   ["About", "about"],
   ["Process", "process"],
   ["FAQ", "faq"],

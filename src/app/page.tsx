@@ -1,7 +1,6 @@
 import {
   ArrowUpRight,
   Check,
-  CheckCircle2,
   MapPin,
   Award,
   GraduationCap,
@@ -55,8 +54,8 @@ export default function Home() {
         <Hero />
         <MetricsStrip />
 
-        {/* 1. Services Section with Detailed Capabilities */}
-        <section id="services" className="bg-white/75 py-16 md:py-24 border-b border-panel/60">
+        {/* 1. Services Section - Minimal & Refined */}
+        <section id="services" className="bg-white/75 py-14 md:py-20 border-b border-panel/60">
           <div className="wrap">
             <p className="eyebrow">Our services</p>
             <div className="mt-4 grid items-end gap-5 lg:grid-cols-[1.7fr_1fr]">
@@ -69,59 +68,43 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
+            <div className="mt-9 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-5">
               {services.map((s, i) => (
                 <article
                   key={s.id}
                   id={s.id}
                   className={
-                    "group flex flex-col justify-between rounded-2xl border border-panel/80 p-6 transition-all hover:border-primary hover:shadow-sm lg:p-7 " +
-                    (i < 3
-                      ? "bg-canvas/70 lg:col-span-2"
-                      : "bg-panel/25 lg:col-span-3")
+                    "group flex flex-col justify-between rounded-xl border border-panel/75 bg-canvas/40 p-4.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/80 hover:bg-white hover:shadow-xs " +
+                    (i === 4 ? "sm:col-span-2 lg:col-span-1" : "")
                   }
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="grid size-12 place-items-center rounded-xl border border-primary/70 bg-primary/25 text-ink transition-colors group-hover:bg-primary/40">
-                        <s.icon size={24} strokeWidth={1.6} />
+                      <span className="grid size-9 place-items-center rounded-lg border border-panel/80 bg-white text-ink transition-colors group-hover:border-primary group-hover:bg-primary/20">
+                        <s.icon size={18} strokeWidth={1.6} />
                       </span>
-                      <span className="text-[11px] font-semibold text-copy/70 uppercase tracking-widest">
+                      <span className="text-[11px] font-mono font-medium text-copy/60">
                         0{i + 1}
                       </span>
                     </div>
 
-                    <h3 className="mt-6 text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                    <h3 className="mt-3.5 text-base font-semibold tracking-tight text-ink">
                       {s.name}
                     </h3>
 
-                    <p className="mt-3 leading-relaxed text-sm text-copy">
+                    <p className="mt-2 text-xs leading-relaxed text-copy">
                       {s.description}
                     </p>
-
-                    {/* Capabilities checklist pills */}
-                    <div className="mt-5 border-t border-panel/60 pt-4">
-                      <div className="text-[11px] font-semibold uppercase tracking-wider text-copy mb-2.5">
-                        Key Capabilities
-                      </div>
-                      <ul className="grid gap-1.5">
-                        {s.capabilities.map((cap) => (
-                          <li key={cap} className="flex items-center gap-2 text-xs text-ink font-medium">
-                            <CheckCircle2 size={13} className="text-primary shrink-0" />
-                            <span>{cap}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
 
-                  <div className="mt-7 pt-4 border-t border-panel/50">
+                  <div className="mt-4 pt-3 border-t border-panel/40">
                     <a
                       href={enquiry(s.name + " enquiry")}
                       aria-label={"Email Glavia about " + s.name.toLowerCase()}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-ink hover:text-primary transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-ink group-hover:text-blue-600 transition-colors"
                     >
-                      Enquire about {s.name.toLowerCase()} <ArrowUpRight size={14} />
+                      <span>Enquire</span>
+                      <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   </div>
                 </article>

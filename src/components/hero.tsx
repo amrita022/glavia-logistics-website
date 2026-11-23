@@ -18,7 +18,7 @@ const modes = [
     icon: Truck,
     title: "Road coordination",
     copy: "Shipment planning and door-to-door coordination.",
-    alt: "Illustrated loading yard with delivery trucks, warehouse bays and workers moving freight.",
+    alt: "At a warehouse, a worker carries a parcel to the waiting truck while delivery traffic passes.",
   },
   {
     id: "sea",
@@ -26,7 +26,7 @@ const modes = [
     icon: Ship,
     title: "Sea freight",
     copy: "Sea freight coordination for import and export shipments.",
-    alt: "Illustrated dock with a container ship, working crane and cargo handlers.",
+    alt: "A dockside crane transfers a container onto a ship before it leaves the quay.",
   },
   {
     id: "air",
@@ -34,7 +34,7 @@ const modes = [
     icon: Plane,
     title: "Air freight",
     copy: "Air freight planning and shipment documentation.",
-    alt: "Illustrated air cargo terminal with an aircraft, ground crew and cargo carts.",
+    alt: "Ground crew load the aircraft, a service van clears the apron, and the aircraft takes off.",
   },
 ] as const;
 
@@ -97,7 +97,7 @@ export function Hero() {
       </div>
       <div
         ref={scene}
-        className="relative mx-auto -mt-1 h-[205px] max-w-[1800px] sm:-mt-3 sm:h-[300px] lg:-mt-16 lg:h-[385px] xl:-mt-24 xl:h-[410px]"
+        className="relative mx-auto mt-2 h-[205px] max-w-[1800px] sm:h-[300px] lg:h-[350px] xl:h-[385px]"
       >
         <AnimatePresence initial={false}>
           <motion.div

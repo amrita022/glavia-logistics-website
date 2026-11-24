@@ -56,6 +56,18 @@
  }
  .paused *{animation-play-state:paused!important}
  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Night lighting across the yard and its painted metal surfaces. */
+svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 45%, #0d0d0f 78%); }
+.dark :is([fill="#91a5b6"], [fill="#91abc4"], [fill="#98afc1"], [fill="#a9bdd0"]) { fill: #394c5c; }
+.dark :is([fill="#b6cbdd"], [fill="#b9cedc"]) { fill: #495c6c; }
+.dark :is([fill="#dae8f0"], [fill="#dbe7ef"]) { fill: #596e80; }
+.dark :is([fill="#f5f9fc"], [fill="#fff"]) { fill: #798e9c; }
+.dark :is([stop-color="#9db8cf"], [stop-color="#a9c3db"]) { stop-color: #394c5c; }
+.dark :is([stop-color="#accce7"]) { stop-color: #495c6c; }
+.dark :is([stop-color="#c8e1f5"], [stop-color="#d8e7f3"]) { stop-color: #596e80; }
+.dark :is([stop-color="#f1f7fd"], [stop-color="#f9fcff"]) { stop-color: #798e9c; }
+.dark #roof stop:last-child, .dark #wall stop:last-child { stop-color: #364754; }
 </style>
 <g id="yard-and-traffic-markings" >
 <polygon points="241.73,71.56 789.83,298.36 518.39,410.68 -29.71,183.88" fill="var(--yard)" />

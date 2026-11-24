@@ -261,6 +261,24 @@ polygon { stroke:#344a61;stroke-width:.57;stroke-linejoin:round;paint-order:stro
 .dark .apron-markings path[fill="#c0d2df"] {fill:#7897b5;opacity:.22}
 .dark .apron-markings g {stroke:#9bb7cf}
 .dark .uld-train {filter:brightness(.86)}
+
+/* Night lighting across the yard and its painted metal surfaces. */
+svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 45%, #0d0d0f 78%); }
+.dark :is([fill="#92adc5"], [fill="#a8c6df"], [fill="#a9b9c7"], [fill="#a9c0d4"]) { fill: #394c5c; }
+.dark :is([fill="#afc8df"], [fill="#b0bec5"], [fill="#b5cce0"], [fill="#c0d2df"], [fill="#c2d6e8"], [fill="#c3d6e3"], [fill="#c4d6e6"]) { fill: #495c6c; }
+.dark :is([fill="#c6d9ec"], [fill="#c8dbea"], [fill="#cfd8dc"], [fill="#cfdded"], [fill="#cfdfec"], [fill="#d0e0f2"], [fill="#d1dfee"], [fill="#d4e9fc"], [fill="#d9e7f4"], [fill="#d9e7f5"], [fill="#d9eaf5"], [fill="#e1edf7"], [fill="#e5eff7"]) { fill: #596e80; }
+.dark :is([fill="#e9f2f9"], [fill="#f3f7ff"], [fill="#f8fbff"]) { fill: #798e9c; }
+.dark :is([stop-color="#a3bfd2"]) { stop-color: #394c5c; }
+.dark :is([stop-color="#b3d1ef"]) { stop-color: #495c6c; }
+.dark :is([stop-color="#c7ddeb"]) { stop-color: #596e80; }
+.dark :is([stop-color="#e6f0fa"], [stop-color="#edf5fc"], [stop-color="#fff"]) { stop-color: #798e9c; }
+.dark :is([stroke="#9bafc4"]) { stroke: #394c5c; }
+.dark :is([stroke="#adc0d2"], [stroke="#aec3d6"]) { stroke: #495c6c; }
+.dark :is([stroke="#c9dbe9"]) { stroke: #596e80; }
+.dark :is([stroke="#f3f7ff"], [stroke="#fff"]) { stroke: #798e9c; }
+.dark #freighter-skin stop:first-child { stop-color: #98aab5; }
+.dark #freighter-skin stop:last-child { stop-color: #384b5a; }
+.dark .stand-fill { fill: #37424a; opacity: .74; }
 </style>
 
 <g class="apron-markings" fill="none" stroke-linejoin="round">

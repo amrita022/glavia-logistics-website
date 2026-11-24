@@ -85,13 +85,13 @@ polygon{stroke:#344a61;stroke-width:.55;stroke-linejoin:round;paint-order:stroke
 
 
 /* Night lighting keeps the quay and harbour distinct without changing cargo markings. */
-.dark #harbour stop:first-child{stop-color:#123044}
-.dark #harbour stop:nth-child(2){stop-color:#183b50}
-.dark #harbour stop:last-child{stop-color:#214657}
-.dark #pavement stop:first-child{stop-color:#23354b}
-.dark #pavement stop:last-child{stop-color:#18283d}
-.dark #quay-lanes path:first-child{stroke:#394f67}
-.dark #quay-lanes path:nth-child(2){stroke:#7993a9}
+.dark #harbour stop:first-child{stop-color:#13181c}
+.dark #harbour stop:nth-child(2){stop-color:#1a2228}
+.dark #harbour stop:last-child{stop-color:#243039}
+.dark #pavement stop:first-child{stop-color:#2a2a2f}
+.dark #pavement stop:last-child{stop-color:#1e1e22}
+.dark #quay-lanes path:first-child{stroke:#414149}
+.dark #quay-lanes path:nth-child(2){stroke:#92929a}
 .dark .ripple path{stroke:#527e99}
 .dark #signaller-refuge>path{fill:#385369}
 .dark .voyage,.dark #terminal-container-yard,.dark .reach-stacker{filter:brightness(.88)}

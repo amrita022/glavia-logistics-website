@@ -9,7 +9,7 @@
 </defs>
 <style>
  :root{--yard:#e8f0f7;--asphalt:#cfdce8;--walkway:#f2f6fa;--line:#a0b3c5;--lane:#fbfdff;--wall-side:#6f91ab;--roof-trim:#dbe8f3;--truck-end:#72a1c8;--rib:#fff;--mark:#1b4667;--shadow:#233f591d}
- .dark{--yard:#223548;--asphalt:#314658;--walkway:#294052;--line:#526b80;--lane:#8ca2b5;--wall-side:#42617b;--roof-trim:#49647e;--truck-end:#51799a;--rib:#9dbed7;--mark:#153451;--shadow:#0b162894}
+ .dark{--yard:#222225;--asphalt:#303035;--walkway:#28282d;--line:#55555e;--lane:#a0a0aa;--wall-side:#42617b;--roof-trim:#49647e;--truck-end:#51799a;--rib:#9dbed7;--mark:#153451;--shadow:#08080a94}
  .dark .roof-light{stop-color:#63829c}
  .dark .wall-light{stop-color:#7395ad}
  .route{transform:translate(178px,73.66px);animation:through 29s linear infinite -13s}

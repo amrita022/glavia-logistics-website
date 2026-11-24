@@ -12,21 +12,21 @@
 }
 :root.dark {
   color-scheme: dark;
-  --color-canvas: #101a29;
-  --color-ink: #edf4ff;
-  --color-copy: #b9c8dc;
-  --color-panel: #394f68;
-  --color-surface: #213247;
-  --color-solid: #354e6e;
+  --color-canvas: #0d0d0f;
+  --color-ink: #f2f2f4;
+  --color-copy: #c0c0c5;
+  --color-panel: #38383e;
+  --color-surface: #1b1b1f;
+  --color-solid: #34343a;
   --color-amber-600: #ffce80;
   --color-emerald-600: #74deb6;
 }
 .dark .bg-solid {
-  --color-panel: #cbdcf0;
+  --color-panel: #d2d2d6;
 }
 .dark .bg-solid.text-canvas {
-  background-color: #192b40;
-  color: #edf4ff;
+  background-color: #151517;
+  color: #f2f2f4;
 }
 .dark .bg-primary.text-ink { color: #101827; }
 .dark .action-dark { background-color: #89bcff; color: #101827; }
@@ -228,4 +228,68 @@
 @keyframes freight-enter {
   from { opacity: .15; transform: translateY(38px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .service-object,
+  .service-shadow {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 480ms cubic-bezier(.2,.75,.25,1), opacity 480ms ease;
+  }
+
+  #forwarding { --service-move: translate(3px, -6px) rotate(-4deg); }
+  #customs { --service-move: translateY(-5px) rotate(6deg); }
+  #integrated { --service-move: translateY(-4px) scale(1.1); }
+  #express { --service-move: translate(9px, -5px) rotate(-5deg); }
+  #consultation { --service-move: translateY(-4px) rotate(-3deg) scale(1.05); }
+
+  #services article:focus-within .service-object { transform: var(--service-move); }
+  #services article:focus-within .service-shadow { transform: scaleX(.85); opacity: .09; }
+
+  @media (hover: hover) {
+    #services article:hover .service-object { transform: var(--service-move); }
+    #services article:hover .service-shadow { transform: scaleX(.85); opacity: .09; }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #services .service-enter[data-arrived] {
+    animation: service-card-enter 650ms cubic-bezier(.22,.75,.25,1) var(--service-delay, 0ms) backwards;
+  }
+
+  #services .service-enter[data-arrived] .service-visual svg {
+    animation: service-art-enter 720ms cubic-bezier(.22,.75,.25,1) var(--service-delay, 0ms) backwards;
+  }
+
+  #services .service-enter:focus-within {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  @media (40rem <= width < 64rem) {
+    #services .service-enter:nth-child(odd):not(:last-child) {
+      --service-delay: 95ms;
+      --service-rise: 48px;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    #services .service-enter:nth-child(1) { --service-delay: 320ms; --service-rise: 62px; }
+    #services .service-enter:nth-child(2) { --service-delay: 240ms; --service-rise: 54px; }
+    #services .service-enter:nth-child(3) { --service-delay: 160ms; --service-rise: 46px; }
+    #services .service-enter:nth-child(4) { --service-delay: 80ms; --service-rise: 38px; }
+    #services .service-enter:nth-child(5) { --service-delay: 0ms; --service-rise: 30px; }
+  }
+}
+
+@keyframes service-card-enter {
+  from { opacity: .12; transform: translateY(var(--service-rise, 36px)) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes service-art-enter {
+  from { transform: translateY(13px) scale(.88); }
+  70% { transform: translateY(-2px) scale(1.02); }
+  to { transform: translateY(0) scale(1); }
 }

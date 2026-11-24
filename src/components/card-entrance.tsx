@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export function FreightEntrance() {
+export function CardEntrance() {
   useEffect(() => {
     if (!("IntersectionObserver" in window)) return;
 
@@ -14,7 +14,7 @@ export function FreightEntrance() {
       }
     }, { threshold: 0.18 });
 
-    document.querySelectorAll("#transport .freight-enter").forEach((element) => {
+    document.querySelectorAll("#transport .freight-enter, #services .service-enter").forEach((element) => {
       observer.observe(element);
     });
 

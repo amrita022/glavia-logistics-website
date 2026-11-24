@@ -8,7 +8,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { FreightArtwork, type FreightMode } from "../components/freight-artwork";
-import { FreightEntrance } from "../components/freight-entrance";
+import { CardEntrance } from "../components/card-entrance";
+import { ServiceArtwork } from "../components/service-artwork";
 import { Brand } from "../components/brand";
 import { Navigation } from "../components/navigation";
 import { Hero } from "../components/hero";
@@ -54,7 +55,7 @@ export default function Home() {
 
         <section id="transport" aria-labelledby="transport-title" className="bg-panel/30 py-14 md:py-20">
           <div className="wrap">
-            <FreightEntrance />
+            <CardEntrance />
             <div className="freight-enter">
               <h2 id="transport-title" className="heading">Freight and delivery options.</h2>
             <p className="mt-4 max-w-xl text-copy">Glavia coordinates shipments within India and across international markets, with air and sea options where applicable.</p>
@@ -80,7 +81,7 @@ export default function Home() {
         </section>
 
         {/* 1. Services Section - Minimal & Refined */}
-        <section id="services" className="motion-section bg-surface/75 py-14 md:py-20 border-b border-panel/60">
+        <section id="services" className="bg-surface/75 py-14 md:py-20 border-b border-panel/60">
           <div className="wrap">
             <p className="eyebrow">Our services</p>
             <div className="mt-4 grid items-end gap-5 lg:grid-cols-[1.7fr_1fr]">
@@ -99,13 +100,13 @@ export default function Home() {
                   key={s.id}
                   id={s.id}
                   className={
-                    "arrival-card motion-card group flex flex-col justify-between rounded-xl border border-panel/75 bg-canvas/40 p-4.5 hover:border-primary/80 hover:bg-surface hover:shadow-lg " +
+                    "service-enter motion-card group flex flex-col justify-between rounded-xl border border-panel/75 bg-canvas/40 p-4.5 hover:border-primary/80 hover:bg-surface hover:shadow-lg " +
                     (i === 4 ? "sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full lg:max-w-none lg:mx-0 lg:col-span-1" : "")
                   }
                 >
                   <div>
-                    <span className="card-visual relative grid h-20 place-items-center overflow-hidden rounded-lg bg-primary/15 text-ink">
-                      <s.icon size={36} strokeWidth={1.4} aria-hidden="true" />
+                    <span className="service-visual relative grid h-24 place-items-center overflow-hidden rounded-lg bg-primary/15 text-ink">
+                      <ServiceArtwork id={s.id} />
                     </span>
 
                     <h3 className="mt-3.5 text-base font-semibold tracking-tight text-ink">

@@ -45,8 +45,11 @@ function frameScene(object: HTMLObjectElement, scene: HTMLElement, intro: HTMLEl
   if (!viewport.width || !viewport.height) return;
   const { frame: [x, y, width, height] } =
     modes.find((mode) => mode.id === object.dataset.scene) ?? modes[0];
-  const top = intro.getBoundingClientRect().bottom - viewport.top + 12;
-  const bottom = controls.getBoundingClientRect().top - viewport.top - 10;
+  const introBottom = intro.getBoundingClientRect().bottom;
+  const toolbar = controls.getBoundingClientRect();
+  const toolbarAboveScene = toolbar.top - introBottom < 2;
+  const top = (toolbarAboveScene ? toolbar.bottom : introBottom) - viewport.top + 12;
+  const bottom = (toolbarAboveScene ? viewport.bottom : toolbar.top) - viewport.top - 10;
   const available = Math.max(1, bottom - top);
   const scale = Math.min(viewport.width / width, available / height);
   const slack = Math.max(0, available - height * scale);
@@ -156,8 +159,8 @@ export function Hero() {
         <p aria-live="polite" className="sr-only">{mode.alt}</p>
       </div>
 
-      <div aria-hidden="true" className="min-h-[clamp(16rem,min(34vw,44svh),35rem)] flex-1" />
-      <div ref={controls} className="w-full px-4 pt-2 pb-5 sm:px-8 sm:pb-7 lg:px-12">
+      <div aria-hidden="true" className="min-h-[clamp(16rem,min(34vw,44svh),35rem)] flex-1 max-md:order-last" />
+      <div ref={controls} className="flex w-full px-4 pt-2 pb-5 max-md:justify-center max-md:pt-4 max-md:pb-0 sm:px-8 md:pb-7 lg:px-12">
         <div className="flex w-fit max-w-full items-center gap-1 rounded-2xl border border-panel/75 bg-surface p-1 shadow-sm sm:gap-2">
           <div role="group" aria-label="Transport scene" className="flex items-center gap-1">
             {modes.map(({ id, name, icon: Icon }, i) => (

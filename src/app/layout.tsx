@@ -19,7 +19,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={geist.variable}>
+    <html lang="en" className={geist.variable} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{__html: `(()=>{let p;try{p=localStorage.getItem('glavia-theme')}catch{}document.documentElement.classList.toggle('dark',p?p==='dark':matchMedia('(prefers-color-scheme: dark)').matches)})()`}} /></head>
       <body>{children}</body>
     </html>
   );

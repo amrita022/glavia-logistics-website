@@ -61,7 +61,7 @@ export function CaseStudies() {
           {scenarios.map((s) => (
             <article
               key={s.title}
-              className="flex flex-col justify-between rounded-2xl border border-panel bg-white p-6 shadow-xs transition-all hover:border-primary hover:shadow-sm sm:p-7"
+              className="flex flex-col justify-between rounded-2xl border border-panel bg-surface p-6 shadow-xs transition-all hover:border-primary hover:shadow-sm sm:p-7"
             >
               <div>
                 <span className="inline-block rounded-md bg-panel/35 px-2.5 py-1 text-[11px] font-semibold text-ink uppercase tracking-wider">

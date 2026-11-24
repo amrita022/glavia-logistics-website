@@ -154,7 +154,7 @@ export function ModeComparison() {
   const current = modes.find((m) => m.id === activeModeId) || modes[0];
 
   return (
-    <section id="comparison" className="border-t border-panel/80 bg-white/70 py-16 md:py-24">
+    <section id="comparison" className="border-t border-panel/80 bg-surface/70 py-16 md:py-24">
       <div className="wrap">
         {/* Header */}
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -177,7 +177,7 @@ export function ModeComparison() {
                 className={
                   "flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all " +
                   (viewMode === "interactive"
-                    ? "bg-ink text-white shadow-xs"
+                    ? "bg-solid text-white shadow-xs"
                     : "text-copy hover:text-ink")
                 }
               >
@@ -190,7 +190,7 @@ export function ModeComparison() {
                 className={
                   "flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-all " +
                   (viewMode === "grid"
-                    ? "bg-ink text-white shadow-xs"
+                    ? "bg-solid text-white shadow-xs"
                     : "text-copy hover:text-ink")
                 }
               >
@@ -221,8 +221,8 @@ export function ModeComparison() {
                       className={
                         "flex items-center gap-3 rounded-xl border p-3.5 text-left transition-all duration-200 " +
                         (active
-                          ? "border-ink bg-ink text-white shadow-sm ring-2 ring-primary/40 -translate-y-0.5"
-                          : "border-panel/80 bg-white text-ink hover:border-primary hover:bg-canvas/60")
+                          ? "border-ink bg-solid text-white shadow-sm ring-2 ring-primary/40 -translate-y-0.5"
+                          : "border-panel/80 bg-surface text-ink hover:border-primary hover:bg-canvas/60")
                       }
                     >
                       <span
@@ -248,12 +248,12 @@ export function ModeComparison() {
             </div>
 
             {/* Featured Mode Showcase Card */}
-            <div className="rounded-2xl border border-panel bg-white p-5 shadow-sm sm:p-8 lg:p-9 transition-all">
+            <div className="rounded-2xl border border-panel bg-surface p-5 shadow-sm sm:p-8 lg:p-9 transition-all">
               <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.2fr_1fr]">
                 {/* Left Column: Details & Checkpoints */}
                 <div>
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="grid size-11 place-items-center rounded-xl bg-ink text-white shadow-2xs">
+                    <span className="grid size-11 place-items-center rounded-xl bg-solid text-white shadow-2xs">
                       <current.icon size={22} strokeWidth={1.8} />
                     </span>
                     <div>
@@ -356,7 +356,7 @@ export function ModeComparison() {
                     </div>
 
                     {/* Capacity Indicator */}
-                    <div className="rounded-lg bg-white p-3 border border-panel/70">
+                    <div className="rounded-lg bg-surface p-3 border border-panel/70">
                       <span className="text-[11px] font-semibold text-copy uppercase tracking-wider block mb-0.5">
                         Capacity Profile
                       </span>
@@ -380,7 +380,7 @@ export function ModeComparison() {
                   <div className="mt-6 pt-4 border-t border-panel/60">
                     <a
                       href={enquiry(`Enquiry for ${current.name}`)}
-                      className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-xs font-bold text-white transition hover:bg-ink/90 active:scale-[.99]"
+                      className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-solid px-4 py-2.5 text-xs font-bold text-white transition hover:bg-solid/90 active:scale-[.99]"
                     >
                       <span>Inquire About {current.shortName}</span>
                       <ArrowRight size={14} />
@@ -398,7 +398,7 @@ export function ModeComparison() {
             {modes.map((m) => (
               <div
                 key={m.id}
-                className="group flex flex-col justify-between rounded-2xl border border-panel bg-white p-5 shadow-2xs transition-all hover:-translate-y-1 hover:border-primary hover:shadow-sm"
+                className="group flex flex-col justify-between rounded-2xl border border-panel bg-surface p-5 shadow-2xs transition-all hover:-translate-y-1 hover:border-primary hover:shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between">

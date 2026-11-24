@@ -40,7 +40,7 @@ const liveHubs = [
 
 export function MetricsStrip() {
   return (
-    <section aria-label="Operational credentials and key statistics" className="border-b border-panel/70 bg-white/70 backdrop-blur-md">
+    <section aria-label="Operational credentials and key statistics" className="border-b border-panel/70 bg-surface/70 backdrop-blur-md">
       {/* Live Hubs Ticker Bar */}
       <div className="border-b border-panel/40 bg-panel/20 py-2 sm:py-2.5 text-xs text-copy">
         <div className="wrap flex flex-wrap items-center justify-between gap-2 sm:gap-3">
@@ -71,7 +71,7 @@ export function MetricsStrip() {
           {metrics.map((m) => (
             <div
               key={m.label}
-              className="group flex flex-col justify-between rounded-2xl border border-panel/60 bg-canvas/60 p-5 sm:p-6 transition-all hover:border-primary hover:bg-white hover:shadow-sm"
+              className="group flex flex-col justify-between rounded-2xl border border-panel/60 bg-canvas/60 p-5 sm:p-6 transition-all hover:border-primary hover:bg-surface hover:shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between">
@@ -81,7 +81,7 @@ export function MetricsStrip() {
                       {m.unit}
                     </span>
                   </span>
-                  <div className="grid size-10 place-items-center rounded-xl border border-panel bg-white text-ink transition-colors group-hover:border-primary group-hover:bg-primary/20">
+                  <div className="grid size-10 place-items-center rounded-xl border border-panel bg-surface text-ink transition-colors group-hover:border-primary group-hover:bg-primary/20">
                     <m.icon size={20} strokeWidth={1.7} />
                   </div>
                 </div>

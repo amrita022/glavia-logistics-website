@@ -1,192 +1,180 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowRight,
-  ArrowDown,
-  Ship,
-  Truck,
-  Plane,
-  Pause,
-  Play,
-} from "lucide-react";
+import { Ship, Truck, Plane, Pause, Play } from "lucide-react";
 
 const modes = [
   {
     id: "sea",
     name: "Sea",
     icon: Ship,
-    title: "Sea freight & container port",
-    copy: "Vessel coordination, quayside gantry operations, and container clearance.",
-    alt: "At the quayside, a gantry lifts a container from its trailer, places it on the ship and retracts before the vessel departs.",
+    frame: [-12, -36, 714, 350],
+    alt: "At a container port, a gantry lifts cargo from a trailer onto a docked ship.",
   },
   {
     id: "road",
     name: "Road",
     icon: Truck,
-    title: "Road freight & warehousing",
-    copy: "Domestic transport, warehouse logistics, and door-to-door coordination.",
-    alt: "At a warehouse, a worker carries a parcel to the waiting truck while delivery traffic passes.",
+    frame: [-8, -8, 776, 361],
+    alt: "At a warehouse, a worker moves a parcel to a waiting truck as traffic passes.",
   },
   {
     id: "air",
     name: "Air",
     icon: Plane,
-    title: "Air freight",
-    copy: "Air cargo scheduling, apron ramp operations, and rapid shipment documentation.",
-    alt: "Ground crew load a parcel into a cargo aircraft before a service van clears the apron and the plane takes off.",
+    frame: [65, -49, 847, 365],
+    alt: "Ground crew load a cargo aircraft and clear the apron before takeoff.",
   },
 ] as const;
+
+function lightScene(object: HTMLObjectElement) {
+  object.contentDocument?.documentElement.classList.toggle(
+    "dark",
+    document.documentElement.classList.contains("dark"),
+  );
+}
+
+function frameScene(object: HTMLObjectElement, scene: HTMLElement, intro: HTMLElement, controls: HTMLElement) {
+  const svg = object.contentDocument?.documentElement;
+  if (svg?.localName !== "svg") return;
+
+  // Fit the complete operation inside the clear area. The same SVG continues
+  // above and below that area to provide the hero background.
+  const viewport = scene.getBoundingClientRect();
+  if (!viewport.width || !viewport.height) return;
+  const { frame: [x, y, width, height] } =
+    modes.find((mode) => mode.id === object.dataset.scene) ?? modes[0];
+  const top = intro.getBoundingClientRect().bottom - viewport.top + 12;
+  const bottom = controls.getBoundingClientRect().top - viewport.top - 10;
+  const available = Math.max(1, bottom - top);
+  const scale = Math.min(viewport.width / width, available / height);
+  const slack = Math.max(0, available - height * scale);
+  const offset = top + slack * (viewport.width < 640 ? 0.25 : 0.64);
+  const viewWidth = viewport.width / scale;
+  const viewX = x + (width - viewWidth) / 2;
+  const viewY = y - offset / scale;
+  svg.setAttribute("viewBox", `${viewX} ${viewY} ${viewWidth} ${viewport.height / scale}`);
+  svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
+  const headline = intro.querySelector("h1")?.getBoundingClientRect();
+  const copy = intro.getBoundingClientRect();
+  if (headline) {
+    const margin = Math.min(headline.left - viewport.left, viewport.right - headline.right);
+    const detailWidth = Math.min(160, margin - 48);
+    for (const side of ["left", "right"] as const) {
+      const detail = svg.querySelector(`#hero-detail-${side}`);
+      if (!detail) continue;
+      const visible = viewport.width >= 1024 && detailWidth >= 72;
+      detail.setAttribute("visibility", visible ? "visible" : "hidden");
+      if (!visible) continue;
+      const left = side === "left";
+      const screenX = (left ? margin / 2 : viewport.width - margin / 2);
+      const screenY = copy.top - viewport.top + copy.height * (left ? 0.68 : 0.88);
+      detail.setAttribute("transform", `translate(${viewX + screenX / scale} ${viewY + screenY / scale}) scale(${detailWidth / (96 * scale)})`);
+    }
+  }
+  object.dataset.framed = "true";
+}
 
 export function Hero() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(true);
   const scene = useRef<HTMLDivElement>(null);
+  const intro = useRef<HTMLDivElement>(null);
+  const controls = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const mode = modes[index];
   const stopped = paused || !!reduced || !visible;
 
   useEffect(() => {
-    if (!scene.current) return;
-    const observer = new IntersectionObserver(([entry]) =>
-      setVisible(entry.isIntersecting),
-    );
-    observer.observe(scene.current);
+    const syncLighting = () => scene.current?.querySelectorAll("object").forEach(lightScene);
+    const observer = new MutationObserver(syncLighting);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    scene.current
-      ?.querySelectorAll("object")
-      .forEach((object) =>
-        object.contentDocument?.documentElement.classList.toggle(
-          "paused",
-          stopped,
-        ),
-      );
+    const stage = scene.current;
+    const copy = intro.current;
+    const toolbar = controls.current;
+    if (!stage || !copy || !toolbar) return;
+
+    const resize = new ResizeObserver(() =>
+      stage.querySelectorAll("object").forEach((object) => frameScene(object, stage, copy, toolbar)),
+    );
+    [stage, copy, toolbar].forEach((element) => resize.observe(element));
+    const intersection = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    intersection.observe(stage);
+    return () => {
+      resize.disconnect();
+      intersection.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    scene.current?.querySelectorAll("object").forEach((object) =>
+      object.contentDocument?.documentElement.classList.toggle("paused", stopped),
+    );
   }, [stopped, index]);
 
   return (
-    <section
-      aria-labelledby="hero-title"
-      className="relative flex min-h-[108svh] min-h-[740px] sm:min-h-[800px] lg:min-h-[880px] xl:min-h-[960px] flex-col justify-between overflow-hidden bg-canvas"
-    >
-      {/* 1. Full-bleed Animated Logistics Background */}
-      <div
-        ref={scene}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden"
-      >
+    <section aria-labelledby="hero-title"
+      className="relative isolate flex min-h-svh flex-col bg-canvas pt-28 sm:pt-[clamp(8rem,18svh,12rem)]">
+      <div ref={scene} role="img" aria-label={mode.alt}
+        className="pointer-events-none absolute inset-0 -z-10 select-none">
         <AnimatePresence initial={false}>
-          <motion.div
-            key={mode.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <motion.div key={mode.id}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: reduced ? 0 : 0.4 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <object
-              tabIndex={-1}
-              aria-label={mode.alt}
-              data={`/scenes/${mode.id}.svg`}
-              type="image/svg+xml"
-              onLoad={(e) =>
-                e.currentTarget.contentDocument?.documentElement.classList.toggle(
-                  "paused",
-                  stopped,
-                )
-              }
-              className="pointer-events-none h-full w-full object-cover"
-            >
-              {mode.alt}
-            </object>
+            className="absolute inset-0 bg-canvas">
+            <object tabIndex={-1} aria-hidden="true" data-scene={mode.id}
+              data={`/scenes/${mode.id}.svg`} type="image/svg+xml"
+              onLoad={({ currentTarget }) => {
+                lightScene(currentTarget);
+                if (scene.current && intro.current && controls.current) {
+                  frameScene(currentTarget, scene.current, intro.current, controls.current);
+                }
+                currentTarget.contentDocument?.documentElement.classList.toggle("paused", stopped);
+              }}
+              className="block h-full w-full opacity-0 data-[framed=true]:opacity-100" />
           </motion.div>
         </AnimatePresence>
-
-        {/* Ambient readability overlay: soft radial glow behind text to guarantee contrast without concealing the port animation */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_42%,rgba(243,247,255,0.85)_0%,rgba(243,247,255,0.65)_50%,rgba(243,247,255,0.15)_85%,transparent_100%)]" />
-
-        {/* Subtle top fade for smooth header continuity */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-canvas/90 via-canvas/40 to-transparent" />
-
-        {/* Subtle bottom fade to ground the floating dock and transition into the services section */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-canvas/90 via-canvas/30 to-transparent" />
       </div>
 
-      {/* 2. Original Text Content, Typography & Positioning */}
-      <div className="wrap relative z-10 flex flex-col items-center pt-32 sm:pt-36 md:pt-44 text-center">
-        <h1
-          id="hero-title"
-          className="text-[clamp(2.2rem,5.5vw,5.5rem)] leading-[.99] font-semibold tracking-[-.07em]"
-        >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(34rem,62%)] bg-gradient-to-b from-canvas via-canvas/85 to-transparent" />
+
+      <div ref={intro} className="mx-auto flex w-full flex-col items-center px-4 text-center sm:px-8">
+        <h1 id="hero-title" className="text-balance text-[clamp(2rem,4.7vw,6.5rem)] leading-[1.02] font-semibold tracking-[-.07em]">
           Connecting markets.
-          <br />
-          Moving business forward.
+          <br className="hidden sm:block" /> Moving business forward.
         </h1>
-        <p className="mt-5 max-w-[590px] text-base leading-relaxed text-copy md:text-lg">
-          Your logistics partner for moving goods across borders with
-          confidence, transparency, and efficiency.
+        <p className="mt-4 max-w-[37rem] text-balance text-sm leading-relaxed text-copy sm:text-base md:mt-6 lg:text-lg">
+          Your logistics partner for moving goods across borders with confidence, transparency, and efficiency.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-3">
-          <a className="action action-dark" href="#services">
-            Explore services <ArrowRight size={16} />
-          </a>
-          <a
-            className="action border border-ink/20 bg-canvas hover:border-ink"
-            href="#process"
-          >
-            Our process <ArrowDown size={16} />
-          </a>
-        </div>
+        <p aria-live="polite" className="sr-only">{mode.alt}</p>
       </div>
 
-      {/* 3. Transport Scene Interactive Glass Dock */}
-      <div className="relative z-10 w-full pb-6 pt-2 sm:pb-8">
-        <div className="wrap">
-          <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-panel/75 bg-white/80 p-2 shadow-sm backdrop-blur-md sm:p-2.5">
-            <div
-              role="group"
-              aria-label="Transport scene"
-              className="inline-flex gap-1 rounded-xl border border-panel/60 bg-canvas/90 p-1"
-            >
-              {modes.map((item, i) => (
-                <button
-                  key={item.id}
-                  aria-pressed={i === index}
-                  onClick={() => setIndex(i)}
-                  className={
-                    "flex min-h-9 items-center justify-center gap-2 rounded-lg px-3 text-xs font-semibold transition sm:min-h-10 sm:px-4 sm:text-sm " +
-                    (i === index
-                      ? "bg-ink text-white shadow-xs"
-                      : "text-copy hover:bg-panel/50 hover:text-ink")
-                  }
-                >
-                  <item.icon size={15} />
-                  {item.name}
-                </button>
-              ))}
-            </div>
-
-            <p
-              aria-live="polite"
-              className="order-last w-full text-center text-xs text-copy sm:order-none sm:w-auto sm:flex-1 sm:px-4 sm:text-left sm:text-sm"
-            >
-              <strong className="mr-1.5 font-semibold text-ink">{mode.title}</strong>
-              <span className="hidden sm:inline">— </span>
-              {mode.copy}
-            </p>
-
-            <button
-              onClick={() => setPaused(!paused)}
-              aria-label={paused ? "Play scene motion" : "Pause scene motion"}
-              aria-pressed={paused}
-              className="grid size-10 place-items-center rounded-xl border border-panel/70 bg-white/70 text-ink transition hover:bg-panel/50 hover:border-panel motion-reduce:hidden sm:size-11"
-            >
-              {paused ? <Play size={15} /> : <Pause size={15} />}
-            </button>
+      <div aria-hidden="true" className="min-h-[clamp(16rem,min(34vw,44svh),35rem)] flex-1" />
+      <div ref={controls} className="w-full px-4 pt-2 pb-5 sm:px-8 sm:pb-7 lg:px-12">
+        <div className="flex w-fit max-w-full items-center gap-1 rounded-2xl border border-panel/75 bg-surface p-1 shadow-sm sm:gap-2">
+          <div role="group" aria-label="Transport scene" className="flex items-center gap-1">
+            {modes.map(({ id, name, icon: Icon }, i) => (
+              <button key={id} type="button" aria-pressed={i === index} onClick={() => setIndex(i)}
+                className={`flex min-h-11 items-center justify-center gap-1.5 rounded-xl px-2.5 text-xs font-semibold transition-colors sm:px-4 sm:text-sm ${i === index
+                  ? "bg-solid text-white"
+                  : "text-copy hover:bg-panel/50 hover:text-ink"}`}>
+                <Icon size={15} aria-hidden="true" />
+                {name}
+              </button>
+            ))}
           </div>
+          <button type="button" onClick={() => setPaused(!paused)}
+            aria-label={paused ? "Play scene motion" : "Pause scene motion"} aria-pressed={paused}
+            className="grid size-11 shrink-0 place-items-center rounded-xl border border-panel/70 text-ink transition-colors hover:bg-panel/50 motion-reduce:hidden">
+            {paused ? <Play size={15} /> : <Pause size={15} />}
+          </button>
         </div>
       </div>
     </section>

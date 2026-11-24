@@ -137,7 +137,7 @@ export function ShipmentPlanner() {
   const enquirySubject = `Shipment Planning Enquiry: ${modeData.label} from ${originData.name} to ${destData.name}`;
 
   return (
-    <section id="planner" className="border-t border-panel/80 bg-white/60 py-16 md:py-24">
+    <section id="planner" className="border-t border-panel/80 bg-surface/60 py-16 md:py-24">
       <div className="wrap">
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -172,8 +172,8 @@ export function ShipmentPlanner() {
                       className={
                         "flex items-start gap-3 rounded-xl border p-3.5 text-left transition-all " +
                         (active
-                          ? "border-ink bg-ink text-white shadow-sm"
-                          : "border-panel/80 bg-white text-ink hover:border-primary hover:bg-white")
+                          ? "border-ink bg-solid text-white shadow-sm"
+                          : "border-panel/80 bg-surface text-ink hover:border-primary hover:bg-surface")
                       }
                     >
                       <div
@@ -218,7 +218,7 @@ export function ShipmentPlanner() {
                         "flex items-center justify-between rounded-xl border px-3.5 py-2.5 text-left text-xs font-medium transition-all " +
                         (active
                           ? "border-primary bg-primary/20 text-ink font-semibold"
-                          : "border-panel/70 bg-white text-copy hover:border-panel hover:text-ink")
+                          : "border-panel/70 bg-surface text-copy hover:border-panel hover:text-ink")
                       }
                     >
                       <span className="truncate pr-2">{o.name}</span>
@@ -247,8 +247,8 @@ export function ShipmentPlanner() {
                       className={
                         "rounded-xl border px-3.5 py-2 text-xs font-medium transition-all " +
                         (active
-                          ? "border-ink bg-ink text-white font-semibold"
-                          : "border-panel/80 bg-white text-copy hover:border-panel hover:text-ink")
+                          ? "border-ink bg-solid text-white font-semibold"
+                          : "border-panel/80 bg-surface text-copy hover:border-panel hover:text-ink")
                       }
                     >
                       {d.name}
@@ -260,7 +260,7 @@ export function ShipmentPlanner() {
           </div>
 
           {/* Dynamic Result Column */}
-          <div className="flex flex-col justify-between rounded-2xl border border-panel bg-white p-6 shadow-sm sm:p-8">
+          <div className="flex flex-col justify-between rounded-2xl border border-panel bg-surface p-6 shadow-sm sm:p-8">
             <div>
               <div className="flex items-center justify-between border-b border-panel/60 pb-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-panel bg-canvas px-3 py-1 text-xs font-semibold text-ink">

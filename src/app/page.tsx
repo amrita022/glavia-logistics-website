@@ -7,14 +7,13 @@ import {
   Briefcase,
   ShieldCheck,
 } from "lucide-react";
+import { FreightArtwork, type FreightMode } from "../components/freight-artwork";
+import { FreightEntrance } from "../components/freight-entrance";
 import { Brand } from "../components/brand";
 import { Navigation } from "../components/navigation";
 import { Hero } from "../components/hero";
-import { MetricsStrip } from "../components/metrics-strip";
-import { ShipmentPlanner } from "../components/shipment-planner";
-import { GatewaysShowcase } from "../components/gateways-showcase";
-import { ModeComparison } from "../components/mode-comparison";
-import { CaseStudies } from "../components/case-studies";
+// import { ModeComparison } from "../components/mode-comparison";
+// import { CaseStudies } from "../components/case-studies";
 import { QuickContact } from "../components/quick-contact";
 import { Faq } from "../components/faq";
 import { email, enquiry, services } from "../lib/company";
@@ -22,21 +21,21 @@ import { email, enquiry, services } from "../lib/company";
 const steps = [
   {
     num: "01",
-    title: "Scope & Route Consultation",
-    body: "Share your cargo classification, origin, destination and timing. We evaluate incoterms, route feasibility, and carrier schedules.",
-    deliverable: "Feasibility review & customs readiness check",
+    title: "Shipment planning",
+    body: "Tell us about your shipment so we can understand your logistics requirements.",
+    deliverable: "Shipment planning and coordination",
   },
   {
     num: "02",
-    title: "Pre-Clearance Documentation & Booking",
-    body: "We audit commercial invoices, packing lists, and regulatory certificates, pre-filing electronic EDI documentation to avoid port dwell times.",
-    deliverable: "ICEGATE pre-filing & carrier space confirmation",
+    title: "Documentation and clearance",
+    body: "We support import and export documentation and help coordinate applicable customs requirements.",
+    deliverable: "Documentation and stakeholder coordination",
   },
   {
     num: "03",
-    title: "Execution, Clearance & Delivery",
-    body: "Our on-ground operations team supervises port/air appraisal, container examination, Out-of-Charge issuance, and door dispatch.",
-    deliverable: "Milestone status updates & Proof of Delivery (POD)",
+    title: "Freight coordination and updates",
+    body: "We coordinate freight movements and share shipment updates. Our express and courier services include door-to-door shipments.",
+    deliverable: "Shipment communication and tracking support",
   },
 ];
 
@@ -45,17 +44,43 @@ export default function Home() {
     <div id="home">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-white focus:p-3"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-surface focus:p-3"
       >
         Skip to content
       </a>
       <Navigation />
       <main id="main" tabIndex={-1}>
         <Hero />
-        <MetricsStrip />
+
+        <section id="transport" aria-labelledby="transport-title" className="bg-panel/30 py-14 md:py-20">
+          <div className="wrap">
+            <FreightEntrance />
+            <div className="freight-enter">
+              <h2 id="transport-title" className="heading">Freight and delivery options.</h2>
+            <p className="mt-4 max-w-xl text-copy">Glavia coordinates shipments within India and across international markets, with air and sea options where applicable.</p>
+            </div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {([
+                { title: "Air freight", mode: "air", body: "Air freight coordination for import and export shipments, where applicable.", href: "#forwarding" },
+                { title: "Sea freight", mode: "sea", body: "Sea freight coordination with shipment and documentation support, where applicable.", href: "#forwarding" },
+                { title: "Express & courier", mode: "courier", body: "Door-to-door shipments with tracking and communication, including support for e-commerce businesses.", href: "#express" },
+              ] satisfies { title: string; mode: FreightMode; body: string; href: string }[]).map(({ title, mode, body, href }) => (
+                <a key={title} href={href} className="freight-enter motion-card group flex flex-col rounded-2xl border border-panel bg-surface p-5 hover:border-primary hover:shadow-lg sm:p-6">
+                  <span className="relative grid h-32 place-items-center overflow-hidden rounded-xl bg-primary/20 text-ink">
+                    <FreightArtwork mode={mode} />
+                  </span>
+                  <h3 className="mt-5 flex items-center justify-between gap-3 text-lg font-semibold">
+                    {title}<ArrowUpRight size={17} className="card-arrow shrink-0" aria-hidden="true" />
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-copy">{body}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* 1. Services Section - Minimal & Refined */}
-        <section id="services" className="bg-white/75 py-14 md:py-20 border-b border-panel/60">
+        <section id="services" className="motion-section bg-surface/75 py-14 md:py-20 border-b border-panel/60">
           <div className="wrap">
             <p className="eyebrow">Our services</p>
             <div className="mt-4 grid items-end gap-5 lg:grid-cols-[1.7fr_1fr]">
@@ -74,19 +99,14 @@ export default function Home() {
                   key={s.id}
                   id={s.id}
                   className={
-                    "group flex flex-col justify-between rounded-xl border border-panel/75 bg-canvas/40 p-4.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/80 hover:bg-white hover:shadow-xs " +
+                    "arrival-card motion-card group flex flex-col justify-between rounded-xl border border-panel/75 bg-canvas/40 p-4.5 hover:border-primary/80 hover:bg-surface hover:shadow-lg " +
                     (i === 4 ? "sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full lg:max-w-none lg:mx-0 lg:col-span-1" : "")
                   }
                 >
                   <div>
-                    <div className="flex items-center justify-between">
-                      <span className="grid size-9 place-items-center rounded-lg border border-panel/80 bg-white text-ink transition-colors group-hover:border-primary group-hover:bg-primary/20">
-                        <s.icon size={18} strokeWidth={1.6} />
-                      </span>
-                      <span className="text-[11px] font-mono font-medium text-copy/60">
-                        0{i + 1}
-                      </span>
-                    </div>
+                    <span className="card-visual relative grid h-20 place-items-center overflow-hidden rounded-lg bg-primary/15 text-ink">
+                      <s.icon size={36} strokeWidth={1.4} aria-hidden="true" />
+                    </span>
 
                     <h3 className="mt-3.5 text-base font-semibold tracking-tight text-ink">
                       {s.name}
@@ -104,7 +124,7 @@ export default function Home() {
                       className="inline-flex items-center gap-1 text-xs font-semibold text-ink group-hover:text-blue-600 transition-colors"
                     >
                       <span>Enquire</span>
-                      <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight size={13} className="card-arrow" aria-hidden="true" />
                     </a>
                   </div>
                 </article>
@@ -113,14 +133,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 2. Interactive Shipment Route & Clearance Planner */}
-        <ShipmentPlanner />
-
         {/* 3. Freight Mode Decision Matrix */}
-        <ModeComparison />
+        {/* <ModeComparison /> */}
 
         {/* 4. About Glavia & Executive Leadership */}
-        <section id="about" className="bg-panel/40 py-16 md:py-24 border-y border-panel/70">
+        <section id="about" className="motion-section bg-panel/40 py-16 md:py-24 border-y border-panel/70">
           <div className="wrap grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16 items-start">
             <div>
               <p className="eyebrow">About Glavia</p>
@@ -130,21 +147,30 @@ export default function Home() {
                 across borders.
               </h2>
               <p className="mt-6 max-w-lg text-base leading-relaxed text-copy sm:text-lg">
-                Glavia Logistics LLP is a Mumbai-based partnership firm dedicated to simplifying freight movement and customs clearance. Our mission is to make global trade dependable through proactive communication, regulatory accuracy, and customer-focused coordination.
+                Glavia Logistics LLP is a Mumbai-based partnership firm that coordinates freight movement and customs clearance for businesses in India and international markets. We build long-term partnerships through professional expertise, trust, and clear communication.
               </p>
+
+              <dl className="mt-7 space-y-5 text-sm leading-relaxed text-copy">
+                <div>
+                  <dt className="font-semibold text-ink">Our mission</dt>
+                  <dd>Simplify global trade through reliable freight forwarding and customs clearance, with efficient, transparent, customer-focused support.</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-ink">Our vision</dt>
+                  <dd>Become the first choice for businesses seeking reliable, transparent, and efficient freight forwarding and customs clearance, built on trust, expertise, and long-term relationships.</dd>
+                </div>
+              </dl>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {[
-                  "On-ground Mumbai port presence",
-                  "Direct ICEGATE customs filing",
-                  "Single-point account coordinator",
-                  "Transparent milestone updates",
-                  "FOB, CIF, DDP Incoterms expertise",
-                  "Demurrage & dwell-time prevention",
+                  "Dependable shipment coordination",
+                  "Clear communication",
+                  "Support with applicable trade requirements",
+                  "Customer-focused solutions",
                 ].map((s) => (
                   <div
                     key={s}
-                    className="flex items-center gap-2 rounded-lg bg-white/70 border border-panel/60 px-3 py-2 text-xs font-medium text-ink"
+                    className="flex items-center gap-2 rounded-lg bg-surface/70 border border-panel/60 px-3 py-2 text-xs font-medium text-ink"
                   >
                     <Check size={14} className="text-emerald-600 shrink-0" />
                     <span>{s}</span>
@@ -152,14 +178,14 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-8 rounded-xl border border-panel/70 bg-white/60 p-4 text-xs leading-relaxed text-copy">
+              <div className="mt-8 rounded-xl border border-panel/70 bg-surface/60 p-4 text-xs leading-relaxed text-copy">
                 <strong className="block text-ink text-sm mb-1 font-semibold">Our Operating Promise</strong>
-                Making complex customs regulations and international freight simpler, smoother, and completely transparent for your business.
+                Making complex logistics processes simpler, smoother, and more dependable.
               </div>
             </div>
 
             {/* Founder Credentials Card */}
-            <div className="flex flex-col justify-between rounded-2xl bg-ink p-7 text-canvas shadow-lg sm:p-9">
+            <div className="flex flex-col justify-between rounded-2xl bg-solid p-7 text-canvas shadow-lg sm:p-9">
               <div>
                 <div className="flex items-center justify-between border-b border-panel/20 pb-4">
                   <span className="text-xs font-semibold tracking-widest text-primary uppercase flex items-center gap-1.5">
@@ -193,7 +219,7 @@ export default function Home() {
                     <Briefcase size={16} className="text-primary shrink-0 mt-0.5" />
                     <div>
                       <strong className="text-white block font-medium">25 Years with UPS</strong>
-                      Country Brokerage Manager overseeing customs brokerage, international express, transportation, and Trade Management Services (TMS).
+                      As Country Brokerage Manager, he oversaw international clearance, customs brokerage, transportation, Trade Management Services, customer service, and US and UK brokerage back-office operations across express and freight forwarding.
                     </div>
                   </div>
 
@@ -201,7 +227,7 @@ export default function Home() {
                     <GraduationCap size={16} className="text-primary shrink-0 mt-0.5" />
                     <div>
                       <strong className="text-white block font-medium">Executive Credentials</strong>
-                      Columbia Business School credential (2021) • University of Mumbai graduate.
+                      Columbia Business School credential (2021) • University of Mumbai.
                     </div>
                   </div>
 
@@ -215,6 +241,15 @@ export default function Home() {
                 </div>
               </div>
 
+              <details className="mt-6 border-t border-panel/20 pt-4 text-sm leading-relaxed text-panel">
+                <summary className="cursor-pointer font-semibold text-white">More about Suresh Bhagwat</summary>
+                <div className="mt-3 space-y-3">
+                  <p>Before UPS, Suresh spent 10 years in freight forwarding, customs clearance, and international trade documentation, building the operational experience that informed his later leadership.</p>
+                  <p>His expertise spans international transportation, brokerage, express and courier operations, import and export trade management, and US and UK brokerage support. He has led business process improvement, customer service, and team development.</p>
+                  <p>His approach starts with understanding the customer’s business, anticipating trade and logistics challenges, and improving processes. At Glavia, he aims to build responsive, transparent logistics operations and dependable long-term relationships.</p>
+                </div>
+              </details>
+
               <a
                 href="https://www.linkedin.com/in/suresh-bhagwat-0b424334"
                 target="_blank"
@@ -227,19 +262,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. Key Hubs & Clearance Gateways */}
-        <GatewaysShowcase />
-
         {/* 6. Proven Execution & Case Studies */}
-        <CaseStudies />
+        {/* <CaseStudies /> */}
 
         {/* 7. Process Section */}
-        <section id="process" className="wrap py-16 md:py-24">
+        <section id="process" className="motion-section wrap py-16 md:py-24">
           <p className="eyebrow">Our process</p>
           <div className="mt-4 grid items-end gap-5 lg:grid-cols-[1.7fr_1fr]">
             <h2 className="heading">How we work with you.</h2>
             <p className="max-w-sm leading-relaxed text-copy">
-              A transparent, structured workflow designed to prevent customs delays and ensure complete cargo visibility.
+              We connect shipment planning, documentation, clearance, and communication.
             </p>
           </div>
 
@@ -247,7 +279,7 @@ export default function Home() {
             {steps.map((st) => (
               <div
                 key={st.title}
-                className="group flex flex-col justify-between rounded-2xl border border-panel/80 bg-white/70 p-6 shadow-xs transition-all hover:border-primary hover:shadow-sm sm:p-7"
+                className="motion-card group flex flex-col justify-between rounded-2xl border border-panel/80 bg-surface/70 p-6 shadow-xs hover:border-primary hover:shadow-sm sm:p-7"
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-panel/50 pb-3">
@@ -280,7 +312,7 @@ export default function Home() {
         {/* 8. FAQ Section */}
         <section
           id="faq"
-          className="border-t border-panel bg-white/70 py-16 md:py-24"
+          className="motion-section border-t border-panel bg-surface/70 py-16 md:py-24"
         >
           <div className="wrap grid gap-8 md:grid-cols-[1fr_1.45fr]">
             <div>
@@ -291,7 +323,7 @@ export default function Home() {
                 customs questions.
               </h2>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-copy">
-                Common questions on customs documentation, demurrage prevention, incoterms, and route coordination.
+                Common questions about freight forwarding, customs clearance, and trade consultation.
               </p>
             </div>
             <Faq />
@@ -318,9 +350,8 @@ export default function Home() {
             <strong>Navigation</strong>
             {[
               ["Services", "services"],
-              ["Shipment planner", "planner"],
-              ["Mode comparison", "comparison"],
-              ["Trade gateways", "gateways"],
+              ["Freight options", "transport"],
+              // ["Mode comparison", "comparison"],
               ["About Glavia", "about"],
               ["Our process", "process"],
               ["FAQ", "faq"],
@@ -347,7 +378,7 @@ export default function Home() {
             ))}
           </nav>
           <address className="grid content-start gap-3 text-sm text-copy not-italic">
-            <strong className="text-ink">Mumbai Operations Office</strong>
+            <strong className="text-ink">Mumbai office</strong>
             <p className="flex items-start gap-2">
               <MapPin size={16} className="mt-0.5 shrink-0" />
               D/1802, Ekta Meadows, Siddharth Nagar, Mumbai 400066, India
@@ -358,9 +389,7 @@ export default function Home() {
             <a href="tel:+919820348813" className="hover:underline">
               +91 98203 48813
             </a>
-            <p className="text-xs text-copy/70 mt-1">
-              Mon – Sat: 9:00 AM – 7:00 PM IST
-            </p>
+            <a href="https://www.glavialogistic.com" className="hover:underline">www.glavialogistic.com</a>
           </address>
         </div>
         <div className="mt-10 border-t border-panel pt-5 flex flex-wrap items-center justify-between gap-4 text-xs text-copy">

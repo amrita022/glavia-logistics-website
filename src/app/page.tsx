@@ -339,7 +339,7 @@ export default function Home() {
       <footer className="wrap py-12">
         <div className="grid gap-9 md:grid-cols-[1fr_.75fr_1fr_1.2fr]">
           <div>
-            <Brand />
+            <Brand full />
             <p className="mt-4 max-w-xs text-xs leading-relaxed text-copy">
               Glavia Logistics LLP simplifies freight forwarding and customs clearance through operational expertise, proactive communication, and dependable execution.
             </p>

@@ -279,6 +279,14 @@ svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 4
 .dark #freighter-skin stop:first-child { stop-color: #98aab5; }
 .dark #freighter-skin stop:last-child { stop-color: #384b5a; }
 .dark .stand-fill { fill: #37424a; opacity: .74; }
+ :root{--side-lane:#d7e2eb}.dark{--side-lane:#343a40}
+ @media(prefers-reduced-motion:no-preference){
+ .side-shuttle{animation:side-transfer 9s ease-in-out infinite alternate}
+ #hero-detail-right .side-shuttle{animation-delay:-5s}
+ .side-beacon{animation:side-signal 3s ease-in-out infinite alternate}
+ }
+ @keyframes side-transfer{0%,12%{transform:translate(0,0)}88%,100%{transform:translate(37px,-16.5px)}}
+ @keyframes side-signal{to{opacity:.45}}
 </style>
 
 <g class="apron-markings" fill="none" stroke-linejoin="round">
@@ -387,7 +395,7 @@ svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 4
  </g></g></g>
 
   
-<g id="hero-detail-left" visibility="hidden" opacity=".76">
+<g id="hero-detail-left" visibility="hidden" opacity=".96"><path d="m-62 26 86-38 35 16-87 39z" fill="var(--side-lane)" stroke="#718ba2" stroke-width=".55"/><path d="m-55 27 84-37m-61 50L52 3" stroke="#a8b2b8" opacity=".6" stroke-width=".75"/><g transform="translate(-16 -18) scale(.76)">
   <path d="M-43 11 6-11 43 7 -7 29Z" fill="#63839e" opacity=".18"/>
   <path d="M-36 3 7-16 38-1 -5 18Z" fill="#92adc5"/>
   <path d="M-36 3 -5 18V24L-36 9Z" fill="#5f7f9a"/>
@@ -395,13 +403,25 @@ svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 4
   <path d="M-30 3V-9L-13-25 24-14 33-3 -5 14Z" fill="#d9eaf5" stroke="#758fa7" stroke-width=".8"/>
   <path d="M-30-9 -5 3 24-14m-29 17v11M-13-25 -5-12 24-14" fill="none" stroke="#8aa7bf" stroke-width="1"/>
   <path d="M6 5 16 0V4L6 9Z" fill="#6696bc"/>
-</g>
-<g id="hero-detail-right" visibility="hidden" opacity=".76">
+</g><g transform="translate(32 -14)"><path d="m-6 3 7-3 5 2-7 3z" fill="#617e94"/><path d="M0 2v-12" stroke="#536575" stroke-width="2"/><circle class="side-beacon" cy="-11" r="2" fill="#efc159"/></g><g class="side-shuttle">
+    <path d="m-31 24 23-10 13 6-23 11z" fill="#203345" opacity=".32"/>
+    <path d="m-31 17 24-11 12 6-25 11z" fill="#efc159"/>
+    <path d="m-31 17 11 6v5l-11-6z" fill="#567491"/><path d="m-20 23 25-11v5l-25 11z" fill="#456581"/>
+    <path d="m-17 13 8-4 8 4-8 4z" fill="#c8e1f5"/><path d="m-17 13 8 4v5l-8-4z" fill="#375975"/><path d="m-9 17 8-4v5l-8 4z" fill="#52728b"/>
+    <g fill="#203345" stroke="#8195a8" stroke-width=".65"><ellipse cx="-16" cy="25" rx="2" ry="2.6"/><ellipse cx="1" cy="17.5" rx="2" ry="2.6"/></g><path d="m-30 21-4 2" stroke="#536575"/><path d="m-47 24 12-5 7 4-12 5z" fill="#aec3d6"/><path d="m-47 24 7 4 12-5v3l-12 5-7-4z" fill="#63798a"/><g fill="#253746"><circle cx="-38" cy="30" r="1.4"/><circle cx="-30" cy="27" r="1.4"/></g>
+    </g></g>
+<g id="hero-detail-right" visibility="hidden" opacity=".96"><path d="m-62 26 86-38 35 16-87 39z" fill="var(--side-lane)" stroke="#718ba2" stroke-width=".55"/><path d="m-55 27 84-37m-61 50L52 3" stroke="#a8b2b8" opacity=".6" stroke-width=".75"/><g transform="translate(-16 -18) scale(.76)">
   <path d="M-44 14 11-11 44 3 -11 29Z" fill="#839fb6" opacity=".23"/>
   <path d="m-38 14 51-23m-44 30 51-23" stroke="#d3a952" stroke-width="1.6"/>
   <path d="M-9-8 12-17 34-7 13 2Z" fill="#e1edf7" stroke="#829db3" stroke-width=".8"/>
   <path d="M-9-8 13 2V11L-9 1Z" fill="#7593ad"/>
   <path d="M13 2 34-7V2L13 11Z" fill="#a9c0d4"/>
   <circle cx="-3" cy="5" r="2.5" fill="#364e64"/><circle cx="19" cy="12" r="2.5" fill="#364e64"/>
-</g>
+</g><g transform="translate(32 -14)"><path d="m-6 3 7-3 5 2-7 3z" fill="#617e94"/><path d="M0 2v-12" stroke="#536575" stroke-width="2"/><circle class="side-beacon" cy="-11" r="2" fill="#efc159"/></g><g class="side-shuttle">
+    <path d="m-31 24 23-10 13 6-23 11z" fill="#203345" opacity=".32"/>
+    <path d="m-31 17 24-11 12 6-25 11z" fill="#efc159"/>
+    <path d="m-31 17 11 6v5l-11-6z" fill="#567491"/><path d="m-20 23 25-11v5l-25 11z" fill="#456581"/>
+    <path d="m-17 13 8-4 8 4-8 4z" fill="#c8e1f5"/><path d="m-17 13 8 4v5l-8-4z" fill="#375975"/><path d="m-9 17 8-4v5l-8 4z" fill="#52728b"/>
+    <g fill="#203345" stroke="#8195a8" stroke-width=".65"><ellipse cx="-16" cy="25" rx="2" ry="2.6"/><ellipse cx="1" cy="17.5" rx="2" ry="2.6"/></g><path d="m-30 21-4 2" stroke="#536575"/><path d="m-47 24 12-5 7 4-12 5z" fill="#aec3d6"/><path d="m-47 24 7 4 12-5v3l-12 5-7-4z" fill="#63798a"/><g fill="#253746"><circle cx="-38" cy="30" r="1.4"/><circle cx="-30" cy="27" r="1.4"/></g>
+    </g></g>
   </svg>

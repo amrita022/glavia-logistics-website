@@ -63,18 +63,19 @@ function frameScene(object: HTMLObjectElement, scene: HTMLElement, intro: HTMLEl
   const headline = intro.querySelector("h1")?.getBoundingClientRect();
   const copy = intro.getBoundingClientRect();
   if (headline) {
-    const margin = Math.min(headline.left - viewport.left, viewport.right - headline.right);
-    const detailWidth = Math.min(160, margin - 48);
+    const paragraph = intro.querySelector("p")?.getBoundingClientRect() ?? headline;
+    const margin = Math.min(headline.left, paragraph.left) - viewport.left;
+    const detailWidth = Math.min(object.dataset.scene === "sea" ? 180 : 350, margin - 32);
     for (const side of ["left", "right"] as const) {
       const detail = svg.querySelector(`#hero-detail-${side}`);
       if (!detail) continue;
-      const visible = viewport.width >= 1024 && detailWidth >= 72;
+      const visible = viewport.width >= 768 && detailWidth >= 72;
       detail.setAttribute("visibility", visible ? "visible" : "hidden");
       if (!visible) continue;
       const left = side === "left";
       const screenX = (left ? margin / 2 : viewport.width - margin / 2);
       const screenY = copy.top - viewport.top + copy.height * (left ? 0.68 : 0.88);
-      detail.setAttribute("transform", `translate(${viewX + screenX / scale} ${viewY + screenY / scale}) scale(${detailWidth / (96 * scale)})`);
+      detail.setAttribute("transform", `translate(${viewX + screenX / scale} ${viewY + screenY / scale}) scale(${detailWidth / ((object.dataset.scene === "sea" ? 96 : 132) * scale)})`);
     }
   }
   object.dataset.framed = "true";
@@ -146,7 +147,7 @@ export function Hero() {
         </AnimatePresence>
       </div>
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(34rem,62%)] bg-gradient-to-b from-canvas via-canvas/85 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(34rem,62%)] bg-gradient-to-b from-canvas via-canvas/85 to-transparent md:mask-[linear-gradient(to_right,transparent,#000_34%,#000_66%,transparent)]" />
 
       <div ref={intro} className="mx-auto flex w-full flex-col items-center px-4 text-center sm:px-8">
         <h1 id="hero-title" className="text-balance text-[clamp(2rem,4.7vw,6.5rem)] leading-[1.02] font-semibold tracking-[-.07em]">

@@ -68,6 +68,14 @@ svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 4
 .dark :is([stop-color="#c8e1f5"], [stop-color="#d8e7f3"]) { stop-color: #596e80; }
 .dark :is([stop-color="#f1f7fd"], [stop-color="#f9fcff"]) { stop-color: #798e9c; }
 .dark #roof stop:last-child, .dark #wall stop:last-child { stop-color: #364754; }
+ :root{--side-lane:#d7e2eb}.dark{--side-lane:#343a40}
+ @media(prefers-reduced-motion:no-preference){
+ .side-shuttle{animation:side-transfer 9s ease-in-out infinite alternate}
+ #hero-detail-right .side-shuttle{animation-delay:-5s}
+ .side-beacon{animation:side-signal 3s ease-in-out infinite alternate}
+ }
+ @keyframes side-transfer{0%,12%{transform:translate(0,0)}88%,100%{transform:translate(37px,-16.5px)}}
+ @keyframes side-signal{to{opacity:.45}}
 </style>
 <g id="yard-and-traffic-markings" >
 <polygon points="241.73,71.56 789.83,298.36 518.39,410.68 -29.71,183.88" fill="var(--yard)" />
@@ -508,7 +516,7 @@ svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 4
 <text transform="matrix(.87 .36 0 1 135.33 194.55)" font-size="6.4" font-family="Inter, system-ui, sans-serif" font-weight="650" fill="var(--mark)">Glavia Logistics</text>
 <text transform="matrix(.87 .36 0 1 194.49 227.55)" font-size="2.5" font-family="Inter, system-ui, sans-serif" font-weight="650" fill="var(--mark)">Glavia Logistics</text>
 </g>
-<g id="hero-detail-left" visibility="hidden" opacity=".76">
+<g id="hero-detail-left" visibility="hidden" opacity=".96"><path d="m-62 26 86-38 35 16-87 39z" fill="var(--side-lane)" stroke="#718ba2" stroke-width=".55"/><path d="m-55 27 84-37m-61 50L52 3" stroke="#a8b2b8" opacity=".6" stroke-width=".75"/><g transform="translate(-16 -18) scale(.76)">
   <path d="M-43 13 5-7 43 11 -5 31Z" fill="#698ba7" opacity=".2"/>
   <path d="M-39 9 7-10 39 5 -7 24Z" fill="#ad845a"/>
   <path d="M-39 9 -7 24V28L-39 13Z" fill="#8c674a"/>
@@ -517,8 +525,14 @@ svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 4
   <path d="M-34-3 -12 7V19L-34 9Z M-4 10 12 18V23L-4 16Z" fill="#c99964"/>
   <path d="M-12 7 11-3V8L-12 19Z M12 18 33 9V14L12 23Z" fill="#b58350"/>
   <path d="M-25-7 -3 3 M7 6 22 14" stroke="#f8e4be" stroke-width="3"/>
-</g>
-<g id="hero-detail-right" visibility="hidden" opacity=".76">
+</g><g transform="translate(32 -14)"><path d="m-6 3 7-3 5 2-7 3z" fill="#617e94"/><path d="M0 2v-12" stroke="#536575" stroke-width="2"/><circle class="side-beacon" cy="-11" r="2" fill="#efc159"/></g><g class="side-shuttle">
+    <path d="m-31 24 23-10 13 6-23 11z" fill="#203345" opacity=".32"/>
+    <path d="m-31 17 24-11 12 6-25 11z" fill="#89bcff"/>
+    <path d="m-31 17 11 6v5l-11-6z" fill="#567491"/><path d="m-20 23 25-11v5l-25 11z" fill="#456581"/>
+    <path d="m-17 13 8-4 8 4-8 4z" fill="#c8e1f5"/><path d="m-17 13 8 4v5l-8-4z" fill="#375975"/><path d="m-9 17 8-4v5l-8 4z" fill="#52728b"/>
+    <g fill="#203345" stroke="#8195a8" stroke-width=".65"><ellipse cx="-16" cy="25" rx="2" ry="2.6"/><ellipse cx="1" cy="17.5" rx="2" ry="2.6"/></g>
+    </g></g>
+<g id="hero-detail-right" visibility="hidden" opacity=".96"><path d="m-62 26 86-38 35 16-87 39z" fill="var(--side-lane)" stroke="#718ba2" stroke-width=".55"/><path d="m-55 27 84-37m-61 50L52 3" stroke="#a8b2b8" opacity=".6" stroke-width=".75"/><g transform="translate(-16 -18) scale(.76)">
   <path d="M-40 11 5-8 42 8 -4 28Z" fill="#698ba7" opacity=".2"/>
   <path d="M-37 6 7-13 37 1 -7 20Z" fill="#a9bdd0"/>
   <path d="M-37 6 -7 20V25L-37 11Z" fill="#758da5"/>
@@ -527,5 +541,11 @@ svg.dark { background: radial-gradient(ellipse at 50% 72%, #21272d 0%, #14171a 4
   <path d="M4 9 23 1 34 6 15 14Z" fill="#f1c16b"/>
   <path d="M4 9 15 14V20L4 15Z" fill="#be8b48"/>
   <path d="M15 14 34 6V12L15 20Z" fill="#d4a35c"/>
-</g>
+</g><g transform="translate(32 -14)"><path d="m-6 3 7-3 5 2-7 3z" fill="#617e94"/><path d="M0 2v-12" stroke="#536575" stroke-width="2"/><circle class="side-beacon" cy="-11" r="2" fill="#efc159"/></g><g class="side-shuttle">
+    <path d="m-31 24 23-10 13 6-23 11z" fill="#203345" opacity=".32"/>
+    <path d="m-31 17 24-11 12 6-25 11z" fill="#89bcff"/>
+    <path d="m-31 17 11 6v5l-11-6z" fill="#567491"/><path d="m-20 23 25-11v5l-25 11z" fill="#456581"/>
+    <path d="m-17 13 8-4 8 4-8 4z" fill="#c8e1f5"/><path d="m-17 13 8 4v5l-8-4z" fill="#375975"/><path d="m-9 17 8-4v5l-8 4z" fill="#52728b"/>
+    <g fill="#203345" stroke="#8195a8" stroke-width=".65"><ellipse cx="-16" cy="25" rx="2" ry="2.6"/><ellipse cx="1" cy="17.5" rx="2" ry="2.6"/></g>
+    </g></g>
 </svg>

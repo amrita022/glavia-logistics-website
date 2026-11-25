@@ -6,19 +6,19 @@ import { enquiry } from "../lib/company";
 const questions = [
   {
     q: "What freight forwarding services does Glavia offer?",
-    a: "We manage ocean (FCL/LCL) and air cargo coordination across major global lanes, complete with carrier booking, documentation, and door delivery.",
+    a: "We coordinate domestic and international shipments, including air and sea freight where applicable.",
   },
   {
     q: "How can Glavia help with customs clearance?",
-    a: "Our Mumbai team handles direct ICEGATE EDI filing, tariff classification, and on-ground port/airport examination to ensure fast, demurrage-free clearance.",
+    a: "We help with customs documentation and coordinate import and export clearance.",
   },
   {
     q: "Do you provide express and courier services?",
-    a: "Yes. We manage time-definite door-to-door courier dispatch, priority airport clearance at Sahar ACC, and end-to-end milestone tracking.",
+    a: "Yes. We support door-to-door courier shipments and provide tracking and updates.",
   },
   {
     q: "What trade and process consultation do you offer?",
-    a: "We advise on US and European trade compliance (ISF 10+2, EUR.1), tariff classification, Incoterms risk, and cross-border supply chain mapping.",
+    a: "We offer international trade advice and help businesses map and improve their logistics processes.",
   },
 ] as const;
 
@@ -28,12 +28,12 @@ export function Faq() {
       <Accordion.Root
         type="single"
         collapsible
-        className="border-t border-ink/20"
+        className="grid gap-2.5"
       >
         {questions.map((item) => (
-          <Accordion.Item value={item.q} key={item.q} className="border-b border-ink/20">
+          <Accordion.Item value={item.q} key={item.q} className="faq-row rounded-xl border border-panel/80 bg-surface px-4 sm:px-5">
             <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-5 text-left text-base font-semibold tracking-tight text-ink hover:text-primary transition-colors sm:text-lg">
+              <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-4 text-left text-base font-semibold tracking-tight text-ink hover:text-primary transition-colors sm:text-lg">
                 <span>{item.q}</span>
                 <ChevronDown
                   size={18}

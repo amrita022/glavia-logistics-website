@@ -2,13 +2,10 @@ import {
   ArrowUpRight,
   Check,
   MapPin,
-  Award,
-  GraduationCap,
-  Briefcase,
-  ShieldCheck,
 } from "lucide-react";
 import { FreightArtwork, type FreightMode } from "../components/freight-artwork";
 import { CardEntrance } from "../components/card-entrance";
+import { ProcessArtwork } from "../components/process-artwork";
 import { ServiceArtwork } from "../components/service-artwork";
 import { Brand } from "../components/brand";
 import { Navigation } from "../components/navigation";
@@ -20,25 +17,10 @@ import { Faq } from "../components/faq";
 import { email, enquiry, services } from "../lib/company";
 
 const steps = [
-  {
-    num: "01",
-    title: "Scope & Route Consultation",
-    body: "Share cargo classification, origin, destination and timeline. We evaluate incoterms and carrier routes.",
-    deliverable: "Feasibility review & customs readiness check",
-  },
-  {
-    num: "02",
-    title: "Pre-Clearance & Carrier Booking",
-    body: "We audit commercial invoices and pre-file EDI documentation on ICEGATE to eliminate port dwell.",
-    deliverable: "ICEGATE pre-filing & space confirmation",
-  },
-  {
-    num: "03",
-    title: "Port Clearance & Final Handover",
-    body: "On-ground supervision of port/airport appraisal, container examination, and out-of-charge dispatch.",
-    deliverable: "Milestone status updates & Proof of Delivery (POD)",
-  },
-];
+  { title: "Plan your shipment", body: "Share what you're shipping, where it's going, and when it needs to arrive.", art: "consultation" },
+  { title: "Prepare for customs", body: "We help prepare import or export documents and coordinate clearance.", art: "customs" },
+  { title: "Coordinate freight", body: "We coordinate the shipment and keep you updated as it moves.", art: "forwarding" },
+] as const;
 
 export default function Home() {
   return (
@@ -163,214 +145,92 @@ export default function Home() {
         {/* 3. Freight Mode Decision Matrix */}
         {/* <ModeComparison /> */}
 
-        {/* 4. About Glavia & Executive Leadership */}
-        <section id="about" className="motion-section bg-panel/40 py-14 sm:py-16 md:py-20 border-y border-panel/70">
-          <div className="wrap grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14 items-start">
+        <section id="about" className="motion-section border-y border-panel/70 bg-panel/40 py-14 sm:py-16 md:py-20">
+          <div className="wrap grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
             <div>
               <p className="eyebrow">About Glavia</p>
-              <h2 className="heading mt-4">
-                Simplifying trade,
-                <br />
-                across borders.
-              </h2>
-              <p className="mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-copy">
-                Glavia Logistics LLP coordinates dependable freight forwarding and customs clearance across India and international markets, built on operational precision and clear communication.
+              <h2 className="heading mt-4">Simplifying trade across borders.</h2>
+              <p className="mt-4 max-w-md text-copy">
+                We coordinate freight and customs clearance for businesses in India and across international markets. From shipment planning to import and export paperwork, we help you keep track of what comes next.
               </p>
-
-              {/* High-Impact Proof Points / Key Metrics */}
-              <div className="mt-6 grid grid-cols-3 gap-3">
-                <div className="rounded-xl border border-panel/70 bg-surface/80 p-3.5 text-center shadow-2xs">
-                  <div className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">35+</div>
-                  <div className="mt-0.5 text-[11px] font-medium text-copy">Years Leadership</div>
-                </div>
-                <div className="rounded-xl border border-panel/70 bg-surface/80 p-3.5 text-center shadow-2xs">
-                  <div className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">100%</div>
-                  <div className="mt-0.5 text-[11px] font-medium text-copy">ICEGATE Compliant</div>
-                </div>
-                <div className="rounded-xl border border-panel/70 bg-surface/80 p-3.5 text-center shadow-2xs">
-                  <div className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">&lt; 24h</div>
-                  <div className="mt-0.5 text-[11px] font-medium text-copy">Clearance Target</div>
-                </div>
-              </div>
-
-              {/* Core Strengths Checklist */}
-              <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
+              <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                 {[
-                  { title: "Direct Port Delivery (DPD)", desc: "On-dock delivery at JNPT to avoid CFS dwell fees." },
-                  { title: "Electronic EDI Pre-Filing", desc: "Advance bill of entry filing before vessel berthing." },
-                  { title: "Single-Point Coordinator", desc: "Dedicated senior operations manager for your account." },
-                  { title: "Demurrage Risk Control", desc: "Proactive document audits to protect your free days." },
-                ].map((s) => (
-                  <div
-                    key={s.title}
-                    className="rounded-xl border border-panel/60 bg-surface/70 p-3 text-xs"
-                  >
-                    <div className="flex items-center gap-1.5 font-semibold text-ink">
-                      <Check size={14} className="text-emerald-600 shrink-0" />
-                      <span>{s.title}</span>
-                    </div>
-                    <p className="mt-1 pl-5 text-[11px] text-copy leading-relaxed">
-                      {s.desc}
-                    </p>
-                  </div>
+                  "Direct Port Delivery (DPD)",
+                  "Electronic EDI Pre-Filing",
+                  "Single-Point Coordinator",
+                  "Demurrage Risk Control",
+                ].map((label) => (
+                  <li key={label} className="flex items-start gap-2 rounded-xl border border-panel/70 bg-surface/80 px-3 py-3 text-sm font-semibold leading-snug text-ink">
+                    <Check size={15} aria-hidden="true" className="mt-0.5 shrink-0 text-emerald-600" />
+                    {label}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
-            {/* Founder Credentials Card */}
-            <div className="flex flex-col justify-between rounded-2xl bg-solid p-6 text-canvas shadow-lg sm:p-8">
-              <div>
-                <div className="flex items-center justify-between border-b border-panel/20 pb-4">
-                  <span className="text-xs font-semibold tracking-widest text-primary uppercase flex items-center gap-1.5">
-                    <Award size={15} /> Executive Leadership
-                  </span>
-                  <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[10px] font-medium text-panel">
-                    Mumbai Operations
-                  </span>
-                </div>
-
-                <div className="mt-5">
-                  <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                    Suresh Bhagwat
-                  </h3>
-                  <p className="mt-0.5 text-xs text-primary font-medium">
-                    Director & Founder • Glavia Logistics LLP
-                  </p>
-                </div>
-
-                <div className="mt-5 flex items-baseline gap-2">
-                  <span className="text-4xl font-bold tracking-tighter text-white sm:text-5xl">
-                    35+
-                  </span>
-                  <span className="text-base font-medium text-panel">
-                    Years in International Trade
-                  </span>
-                </div>
-
-                <div className="mt-5 space-y-3 border-t border-panel/20 pt-4 text-xs text-panel leading-relaxed">
-                  <div className="flex items-start gap-2.5">
-                    <Briefcase size={16} className="text-primary shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-medium">25 Years with UPS</strong>
-                      Country Brokerage Manager directing customs clearance, air/ocean freight, transportation, and US/UK brokerage back-office operations.
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2.5">
-                    <GraduationCap size={16} className="text-primary shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-medium">Executive Credentials</strong>
-                      Columbia Business School credential (2021) • University of Mumbai graduate.
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2.5">
-                    <ShieldCheck size={16} className="text-primary shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-medium">Global Governance</strong>
-                      Managed cross-border regulatory operations, customs compliance, and enterprise logistics transformation.
-                    </div>
-                  </div>
-                </div>
-
-                {/* Core Expertise Badges */}
-                <div className="mt-5 border-t border-panel/20 pt-3.5">
-                  <span className="text-[10px] uppercase tracking-wider text-panel/70 block mb-2 font-medium">
-                    Core Specializations
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {[
-                      "Customs Brokerage",
-                      "ICEGATE Compliance",
-                      "Express Cargo",
-                      "Ocean FCL/LCL",
-                      "Trade Advisory",
-                    ].map((badge) => (
-                      <span
-                        key={badge}
-                        className="rounded-md bg-white/10 px-2 py-0.5 text-[11px] font-medium text-white border border-white/10"
-                      >
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
+            <div className="rounded-3xl border border-[#354e70] bg-linear-to-br from-[#1c3352] to-[#101f34] p-5 shadow-sm sm:p-8">
+              <div className="flex items-center gap-4">
+                <span aria-hidden="true" className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary text-sm font-semibold text-[#101827] sm:size-14">
+                  SB
+                </span>
+                <div>
+                  <p className="text-xs font-semibold text-[#d5e2f2]">Director &amp; founder</p>
+                  <h3 className="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl">Suresh Bhagwat</h3>
                 </div>
               </div>
-
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#d5e2f2]">
+                As Country Brokerage Manager at UPS, Suresh oversaw customs clearance and freight forwarding operations. He brings that experience to Glavia, helping businesses move goods across borders.
+              </p>
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <p className="rounded-xl border border-white/20 bg-white/10 p-3 text-xs text-[#d5e2f2] sm:p-4"><strong className="mb-1 block text-3xl tracking-tight text-white">35+</strong> years in logistics and trade</p>
+                <p className="rounded-xl border border-white/20 bg-white/10 p-3 text-xs text-[#d5e2f2] sm:p-4"><strong className="mb-1 block text-3xl tracking-tight text-white">25</strong> years with UPS</p>
+              </div>
               <a
                 href="https://www.linkedin.com/in/suresh-bhagwat-0b424334"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 flex min-h-10 items-center justify-between rounded-xl border border-panel/30 bg-white/10 px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/20"
+                className="mt-5 inline-flex min-h-10 flex-wrap items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition-colors hover:border-primary"
               >
-                <span>Connect on LinkedIn</span>
-                <ArrowUpRight size={15} />
+                View Suresh's LinkedIn profile <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </div>
           </div>
         </section>
 
-        {/* 7. Process Section - Visual 3-Stage Pipeline */}
         <section id="process" className="motion-section wrap py-14 sm:py-16 md:py-20">
           <p className="eyebrow">Our process</p>
-          <div className="mt-4 grid items-end gap-5 lg:grid-cols-[1.7fr_1fr]">
-            <h2 className="heading">How we work with you.</h2>
-            <p className="max-w-sm leading-relaxed text-copy text-sm sm:text-base">
-              A structured 3-step workflow designed to eliminate clearance delays and ensure milestone transparency.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {steps.map((st, i) => (
-              <div
-                key={st.title}
-                className="motion-card group flex flex-col justify-between rounded-2xl border border-panel/80 bg-surface/70 p-5 sm:p-6 shadow-xs hover:border-primary hover:shadow-sm"
-              >
-                <div>
-                  <div className="flex items-center justify-between border-b border-panel/50 pb-3">
-                    <span className="text-xs font-bold text-primary tracking-wider uppercase">
-                      Stage {st.num}
-                    </span>
-                    <span className="text-[11px] font-mono text-copy/60">0{i + 1} / 03</span>
-                  </div>
-                  <h3 className="mt-4 text-base sm:text-lg font-bold tracking-tight text-ink">
-                    {st.title}
+          <h2 className="heading mt-4">How we work with you.</h2>
+          <ol className="mt-8 grid gap-5 md:grid-cols-3">
+            {steps.map(({ title, body, art }, index) => (
+              <li key={art} className="motion-card overflow-hidden rounded-2xl border border-panel/80 bg-surface p-3.5 shadow-xs">
+                <div className="card-visual relative flex h-40 items-center justify-center overflow-hidden rounded-xl bg-linear-to-br from-primary/30 to-panel/30 sm:h-48">
+                  <ProcessArtwork step={art} />
+                </div>
+                <div className="px-2 pb-3 pt-5">
+                  <h3 className="flex items-baseline gap-2.5 text-lg font-semibold tracking-tight text-ink">
+                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/20 text-xs tabular-nums text-ink" aria-hidden="true">0{index + 1}</span>
+                    {title}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-copy">
-                    {st.body}
-                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-copy">{body}</p>
                 </div>
-
-                <div className="mt-5 rounded-lg bg-canvas p-2.5 border border-panel/50">
-                  <span className="text-[10px] font-semibold text-copy uppercase tracking-wider block mb-0.5">
-                    Core Output
-                  </span>
-                  <span className="text-xs font-semibold text-ink flex items-center gap-1.5">
-                    <Check size={13} className="text-emerald-600 shrink-0" />
-                    <span>{st.deliverable}</span>
-                  </span>
-                </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </section>
 
         {/* 8. FAQ Section */}
         <section
           id="faq"
-          className="motion-section border-t border-panel bg-surface/70 py-16 md:py-24"
+          className="border-t border-panel bg-surface/70 py-16 md:py-24"
         >
           <div className="wrap grid gap-8 md:grid-cols-[1fr_1.45fr]">
-            <div>
+            <div className="faq-intro">
               <p className="eyebrow">FAQ</p>
               <h2 className="heading mt-4">
                 Shipment &
                 <br />
                 customs questions.
               </h2>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-copy">
-                Common questions about freight forwarding, customs clearance, and trade consultation.
-              </p>
             </div>
             <Faq />
           </div>

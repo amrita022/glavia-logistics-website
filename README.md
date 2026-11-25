@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Glavia Logistics LLP
 
-## Getting Started
+The website presents Glavia's freight forwarding, customs clearance, courier, and trade advisory services. Visitors can explore animated Road, Sea, and Air freight scenes, review the shipment process, and contact the team by email.
 
-First, run the development server:
+[Production website](https://glavia-logistics21.vercel.app)
+
+## Local development
+
+Use Node.js 20.9 or later and npm.
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks and production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+The build runs TypeScript checks and generates the static site in `out/`. To preview the export with Python 3, run the following command and open [localhost:8080](http://localhost:8080).
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+python -m http.server 8080 --directory out
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path | Purpose |
+| --- | --- |
+| `src/app/page.tsx` | Homepage sections, including services, company profile, and shipment process |
+| `src/app/globals.css` | Shared styles, light and dark themes, and scroll animations |
+| `src/components/hero.tsx` | Freight scene selection, responsive framing, and animation controls |
+| `public/scenes/` | Animated freight illustrations for Road, Sea, and Air |
+| `src/components/faq.tsx` | Expandable frequently asked questions |
+| `src/lib/company.ts` | Services, contact details, and enquiry links |
+| `public/information.md` | Company reference for copy and claims |
 
-## Deploy on Vercel
+The frontend uses Next.js App Router, TypeScript, Tailwind CSS, Motion, and Radix UI.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel builds the site from the connected GitHub repository. A GitHub push updates the production URL after Vercel successfully deploys the commit. Use the deployment dashboard to confirm the commit SHA and check the public URL before sharing an update. The `out/` directory can also be served by a static host.

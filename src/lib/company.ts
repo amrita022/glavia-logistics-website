@@ -12,35 +12,35 @@ export const services = [
     name: "Freight forwarding",
     icon: Container,
     description:
-      "Domestic and international shipment coordination, including ocean and air freight options, import and export support, and documentation.",
+      "Global ocean and air cargo coordination across major trade lanes with carrier booking.",
   },
   {
     id: "customs",
     name: "Customs clearance",
     icon: FileCheck2,
     description:
-      "Import and export clearance coordination, with support for customs documents, stakeholders and applicable regulatory requirements.",
+      "End-to-end ICEGATE EDI filing, tariff classification, and rapid on-ground port clearance.",
   },
   {
     id: "integrated",
     name: "Integrated logistics",
     icon: Boxes,
     description:
-      "Shipment planning, coordination and updates that connect the different stages of your supply chain.",
+      "Multimodal supply chain planning, cross-docking, and automated milestone updates.",
   },
   {
     id: "express",
     name: "Express & courier",
     icon: PackageCheck,
     description:
-      "Door-to-door shipments, port clearance, tracking and communication for businesses, including e-commerce operators.",
+      "Time-definite door-to-door courier dispatch, air hub handling, and priority delivery.",
   },
   {
     id: "consultation",
     name: "Trade consultation",
     icon: Workflow,
     description:
-      "International business consultation, including import and export for the USA and Europe, plus process improvement, mapping, time studies and project implementation.",
+      "Incoterms risk advisory, US/EU regulatory compliance, and customs duty optimization.",
   },
 ] as const;
 

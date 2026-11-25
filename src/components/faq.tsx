@@ -6,19 +6,19 @@ import { enquiry } from "../lib/company";
 const questions = [
   {
     q: "What freight forwarding services does Glavia offer?",
-    a: "We coordinate domestic and international shipments, including air and sea freight where applicable, and help with import and export documentation.",
+    a: "We manage ocean (FCL/LCL) and air cargo coordination across major global lanes, complete with carrier booking, documentation, and door delivery.",
   },
   {
     q: "How can Glavia help with customs clearance?",
-    a: "We support import and export clearance by helping with documentation and applicable requirements and coordinating with relevant stakeholders.",
+    a: "Our Mumbai team handles direct ICEGATE EDI filing, tariff classification, and on-ground port/airport examination to ensure fast, demurrage-free clearance.",
   },
   {
     q: "Do you provide express and courier services?",
-    a: "Yes. We offer door-to-door shipments, import and export port clearance, tracking, and communication, including support for e-commerce businesses.",
+    a: "Yes. We manage time-definite door-to-door courier dispatch, priority airport clearance at Sahar ACC, and end-to-end milestone tracking.",
   },
   {
     q: "What trade and process consultation do you offer?",
-    a: "We offer international business consultation, including import and export consultation for the USA and Europe, process mapping, time studies, and project implementation.",
+    a: "We advise on US and European trade compliance (ISF 10+2, EUR.1), tariff classification, Incoterms risk, and cross-border supply chain mapping.",
   },
 ] as const;
 

@@ -23,6 +23,7 @@ export function Navigation() {
       try { preference = localStorage.getItem("glavia-theme"); } catch {}
       document.documentElement.classList.toggle("dark", preference ? preference === "dark" : media.matches);
     };
+    sync();
     media.addEventListener("change", sync);
     window.addEventListener("storage", sync);
     return () => { media.removeEventListener("change", sync); window.removeEventListener("storage", sync); };

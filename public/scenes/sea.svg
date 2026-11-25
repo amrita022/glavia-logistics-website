@@ -72,7 +72,7 @@ polygon{stroke:#344a61;stroke-width:.55;stroke-linejoin:round;paint-order:stroke
 @keyframes gull-path{0%{transform:translate(-50px,55px)}100%{transform:translate(740px,-20px)}}
 .gull-wing{animation:wing-flap 1.1s ease-in-out infinite alternate;transform-origin:0 0}
 @keyframes wing-flap{0%{transform:scaleY(1)}100%{transform:scaleY(-.65)}}
-.radar-dish{animation:dish-rotate 3.6s linear infinite;transform-origin:648px 44px}
+.radar-dish{animation:dish-rotate 3.6s linear infinite;transform-box:fill-box;transform-origin:center}
 @keyframes dish-rotate{0%{transform:scaleX(1)}50%{transform:scaleX(-1)}100%{transform:scaleX(1)}}
 .hazard-light{animation:hazard-pulse 1.8s infinite}
 @keyframes hazard-pulse{0%,20%,100%{opacity:.2}10%{opacity:1}}

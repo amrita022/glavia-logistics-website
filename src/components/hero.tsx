@@ -28,16 +28,22 @@ const modes = [
   },
 ] as const;
 
-function lightScene(object: HTMLObjectElement) {
-  object.contentDocument?.documentElement.classList.toggle(
+function sceneRoot(object: HTMLObjectElement) {
+  const root = (object.contentDocument ?? object.getSVGDocument())?.documentElement;
+  return root?.localName === "svg" ? root : undefined;
+}
+
+function lightScene(svg: Element) {
+  svg.classList.toggle(
     "dark",
     document.documentElement.classList.contains("dark"),
   );
 }
 
 function frameScene(object: HTMLObjectElement, scene: HTMLElement, intro: HTMLElement, controls: HTMLElement) {
-  const svg = object.contentDocument?.documentElement;
-  if (svg?.localName !== "svg") return;
+  const svg = sceneRoot(object);
+  if (!svg) return;
+  lightScene(svg);
 
   // Fit the complete operation inside the clear area. The same SVG continues
   // above and below that area to provide the hero background.
@@ -93,9 +99,13 @@ export function Hero() {
   const stopped = paused || !!reduced || !visible;
 
   useEffect(() => {
-    const syncLighting = () => scene.current?.querySelectorAll("object").forEach(lightScene);
+    const syncLighting = () => scene.current?.querySelectorAll("object").forEach((object) => {
+      const svg = sceneRoot(object);
+      if (svg) lightScene(svg);
+    });
     const observer = new MutationObserver(syncLighting);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    syncLighting();
     return () => observer.disconnect();
   }, []);
 
@@ -119,7 +129,7 @@ export function Hero() {
 
   useEffect(() => {
     scene.current?.querySelectorAll("object").forEach((object) =>
-      object.contentDocument?.documentElement.classList.toggle("paused", stopped),
+      sceneRoot(object)?.classList.toggle("paused", stopped),
     );
   }, [stopped, index]);
 
@@ -136,11 +146,10 @@ export function Hero() {
             <object tabIndex={-1} aria-hidden="true" data-scene={mode.id}
               data={`/scenes/${mode.id}.svg`} type="image/svg+xml"
               onLoad={({ currentTarget }) => {
-                lightScene(currentTarget);
                 if (scene.current && intro.current && controls.current) {
                   frameScene(currentTarget, scene.current, intro.current, controls.current);
                 }
-                currentTarget.contentDocument?.documentElement.classList.toggle("paused", stopped);
+                sceneRoot(currentTarget)?.classList.toggle("paused", stopped);
               }}
               className="block h-full w-full opacity-0 data-[framed=true]:opacity-100" />
           </motion.div>

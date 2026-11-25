@@ -20,8 +20,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={geist.variable} suppressHydrationWarning>
-      <Script id="glavia-theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{__html: `(()=>{let p;try{p=localStorage.getItem('glavia-theme')}catch{}document.documentElement.classList.toggle('dark',p?p==='dark':matchMedia('(prefers-color-scheme: dark)').matches)})()`}} />
-      <body>{children}</body>
+      <body>
+        <Script id="glavia-theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{__html: `(()=>{let p;try{p=localStorage.getItem('glavia-theme')}catch{}document.documentElement.classList.toggle('dark',p?p==='dark':matchMedia('(prefers-color-scheme: dark)').matches)})()`}} />
+        {children}
+      </body>
     </html>
   );
 }

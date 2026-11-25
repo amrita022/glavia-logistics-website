@@ -57,7 +57,7 @@ export function Navigation() {
         }
       >
         {/* Brand */}
-        <div className="pl-1 sm:pl-2">
+        <div className="min-w-0">
           <Brand />
         </div>
 
@@ -78,7 +78,7 @@ export function Navigation() {
         </nav>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <button type="button" className="grid size-11 shrink-0 place-items-center rounded-full hover:bg-panel/50" onClick={() => {
             const dark = document.documentElement.classList.toggle("dark");
             try { localStorage.setItem("glavia-theme", dark ? "dark" : "light"); } catch {}

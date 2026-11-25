@@ -44,6 +44,6 @@ export const services = [
   },
 ] as const;
 
-export const email = "Sureshb@glavialogistic.com";
+export const email = "Suresh@glavialogistic.com";
 export const enquiry = (subject: string) =>
   "mailto:" + email + "?subject=" + encodeURIComponent(subject);

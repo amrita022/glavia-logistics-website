@@ -67,7 +67,7 @@ Contact Us
 Company Name: Glavia Logistics LLP
 Address: D/1802, Ekta Meadows, Siddharth Nagar, Mumbai -400066
 Phone: 9820348813
-Email: Sureshb@glavialogistic.com
+Email: Suresh@glavialogistic.com
 Website: www.glavialogistic.com
 SURESH BHAGWAT
 Founder|| Glavia Logistics

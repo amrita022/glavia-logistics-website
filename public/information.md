@@ -65,9 +65,9 @@ Let's Move Your Business Forward
 Looking for a dependable freight forwarding and customs clearance partner? Let us understand your requirements and help you find the right logistics solution for your business.
 Contact Us
 Company Name: Glavia Logistics LLP
-Address: Mumbai, India
-Phone: 9820348813, 9326566589
-Email: Suresh@glavialogistic.com
+Address: D/1802, Ekta Meadows, Siddharth Nagar, Mumbai -400066
+Phone: 9820348813
+Email: Sureshb@glavialogistic.com
 Website: www.glavialogistic.com
 SURESH BHAGWAT
 Founder|| Glavia Logistics

@@ -72,8 +72,8 @@ export function QuickContact() {
           <div className="mt-6 flex items-start gap-3 rounded-xl border border-panel/15 bg-white/5 p-4 text-xs text-panel">
             <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
             <div>
-              <strong className="text-white block font-medium">Mumbai office</strong>
-              Mumbai, India
+              <strong className="text-white block font-medium">Mumbai Registered Office</strong>
+              D/1802, Ekta Meadows, Siddharth Nagar, Mumbai - 400066
             </div>
           </div>
         </div>

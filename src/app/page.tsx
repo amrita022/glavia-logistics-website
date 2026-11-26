@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { FreightArtwork, type FreightMode } from "../components/freight-artwork";
 import { CardEntrance } from "../components/card-entrance";
-import { ProcessArtwork } from "../components/process-artwork";
+import { ProcessArtwork, type ProcessStep } from "../components/process-artwork";
 import { ServiceArtwork } from "../components/service-artwork";
 import { Brand } from "../components/brand";
 import { Navigation } from "../components/navigation";
@@ -14,12 +14,44 @@ import { Hero } from "../components/hero";
 // import { CaseStudies } from "../components/case-studies";
 import { QuickContact } from "../components/quick-contact";
 import { Faq } from "../components/faq";
-import { email, enquiry, services } from "../lib/company";
+import { email, enquiry, services, address, phone } from "../lib/company";
 
-const steps = [
-  { title: "Plan your shipment", body: "Share what you're shipping, where it's going, and when it needs to arrive.", art: "consultation" },
-  { title: "Prepare for customs", body: "We help prepare import or export documents and coordinate clearance.", art: "customs" },
-  { title: "Coordinate freight", body: "We coordinate the shipment and keep you updated as it moves.", art: "forwarding" },
+const processes = [
+  {
+    title: "Process Mapping & Flow Design",
+    category: "Workflow Optimization",
+    body: "We map every step of your international supply chain—from origin factory dispatch and documentation to terminal gates and consignee delivery—eliminating procedural bottlenecks.",
+    art: "mapping" as ProcessStep,
+    highlights: ["Supply chain flow mapping", "Standard operating procedures (SOP)", "Handoff synchronization"],
+  },
+  {
+    title: "IOR (Importer of Record) & Trade Compliance",
+    category: "Regulatory Governance",
+    body: "Acting as your compliant import/export regulatory partner for shipments into India, USA, and Europe, managing customs duty assessment, tax declarations, and statutory filings.",
+    art: "ior" as ProcessStep,
+    highlights: ["ICEGATE & CBP/HMRC compliance", "Tariff classification & valuation", "Statutory tax & duty advisory"],
+  },
+  {
+    title: "Process Time Study & Dwell Reduction",
+    category: "Cycle-Time Compression",
+    body: "Rigorous milestone analysis across customs appraisal, examination yards, and ramp handovers to minimize turnaround times and avoid container demurrage and detention charges.",
+    art: "timestudy" as ProcessStep,
+    highlights: ["Port dwell-time reduction", "Demurrage risk control", "Direct Port Delivery (DPD) flows"],
+  },
+  {
+    title: "Customs Brokerage & Port Clearance",
+    category: "Clearance Execution",
+    body: "Electronic EDI filing, ICEGATE documentation, and port clearance coordination with customs officials and stakeholders for expedited cargo release.",
+    art: "customs" as ProcessStep,
+    highlights: ["Electronic EDI pre-filing", "On-ground port examination", "Stakeholder coordination"],
+  },
+  {
+    title: "Multimodal Freight Coordination",
+    category: "Global Movement",
+    body: "Seamless air, ocean, and domestic transport solutions with carrier booking, tracking updates, and proactive communication across worldwide trade corridors.",
+    art: "forwarding" as ProcessStep,
+    highlights: ["Air & ocean freight coordination", "Door-to-door courier routing", "Proactive milestone updates"],
+  },
 ] as const;
 
 export default function Home() {
@@ -124,6 +156,15 @@ export default function Home() {
                     <p className="mt-2 text-xs leading-relaxed text-copy">
                       {s.description}
                     </p>
+
+                    <ul className="mt-3 grid gap-1 border-t border-panel/30 pt-2.5 text-[11px] text-copy">
+                      {s.details.map((point) => (
+                        <li key={point} className="flex items-start gap-1.5 leading-snug">
+                          <span className="size-1 rounded-full bg-primary mt-1.5 shrink-0" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-panel/40">
@@ -198,20 +239,59 @@ export default function Home() {
         </section>
 
         <section id="process" className="motion-section wrap py-14 sm:py-16 md:py-20">
-          <p className="eyebrow">Our process</p>
-          <h2 className="heading mt-4">How we work with you.</h2>
-          <ol className="mt-8 grid gap-5 md:grid-cols-3">
-            {steps.map(({ title, body, art }, index) => (
-              <li key={art} className="motion-card overflow-hidden rounded-2xl border border-panel/80 bg-surface p-3.5 shadow-xs">
-                <div className="card-visual relative flex h-40 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-panel/20 sm:h-48">
-                  <ProcessArtwork step={art} />
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow">Our methodology &amp; processes</p>
+              <h2 className="heading mt-4">
+                Structured for speed,
+                <br /> compliance, and transparency.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-copy">
+              From supply chain process mapping and IOR representation to time-study optimization and port clearance, we ensure seamless execution at every stage.
+            </p>
+          </div>
+
+          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {processes.map(({ title, category, body, art, highlights }, index) => (
+              <li
+                key={title}
+                className={
+                  "motion-card flex flex-col justify-between overflow-hidden rounded-2xl border border-panel/80 bg-surface p-4.5 shadow-xs transition hover:border-primary/80 hover:shadow-md " +
+                  (index >= 3 ? "sm:col-span-1" : "")
+                }
+              >
+                <div>
+                  <div className="card-visual relative flex h-40 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-panel/20 sm:h-44">
+                    <ProcessArtwork step={art} />
+                  </div>
+                  <div className="pt-4">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-bold text-solid">
+                        {category}
+                      </span>
+                      <span className="text-xs font-bold text-primary tabular-nums">
+                        0{index + 1}
+                      </span>
+                    </div>
+                    <h3 className="mt-2.5 text-base sm:text-lg font-bold tracking-tight text-ink">
+                      {title}
+                    </h3>
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-copy">
+                      {body}
+                    </p>
+                  </div>
                 </div>
-                <div className="px-2 pb-3 pt-5">
-                  <h3 className="flex items-baseline gap-2.5 text-lg font-semibold tracking-tight text-ink">
-                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/20 text-xs font-bold tabular-nums text-solid" aria-hidden="true">0{index + 1}</span>
-                    {title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-copy">{body}</p>
+
+                <div className="mt-4 pt-3 border-t border-panel/40">
+                  <ul className="grid gap-1.5 text-[11px] font-medium text-copy">
+                    {highlights.map((h) => (
+                      <li key={h} className="flex items-center gap-1.5">
+                        <Check size={12} className="text-primary shrink-0" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </li>
             ))}
@@ -284,21 +364,18 @@ export default function Home() {
             ))}
           </nav>
           <address className="grid content-start gap-3 text-sm text-copy not-italic">
-            <strong className="text-ink">Mumbai office</strong>
+            <strong className="text-ink">Registered Office</strong>
             <p className="flex items-start gap-2">
-              <MapPin size={16} className="mt-0.5 shrink-0" />
-              Mumbai, India
+              <MapPin size={16} className="mt-0.5 shrink-0 text-primary" />
+              {address}
             </p>
             <a className="break-all hover:underline" href={"mailto:" + email}>
               {email}
             </a>
-            <a href="tel:+919820348813" className="hover:underline">
-              +91 98203 48813
+            <a href={"tel:+91" + phone} className="hover:underline">
+              +91 {phone}
             </a>
-            <a href="tel:+919326566589" className="hover:underline">
-              +91 93265 66589
-            </a>
-            <a href="https://www.glavialogistic.com" className="hover:underline">www.glavialogistic.com</a>
+            <a href={"https://" + "www.glavialogistic.com"} className="hover:underline">www.glavialogistic.com</a>
           </address>
         </div>
         <div className="mt-10 border-t border-panel pt-5 flex flex-wrap items-center justify-between gap-4 text-xs text-copy">

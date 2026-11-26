@@ -99,12 +99,12 @@ export function ProcessShowcase() {
   return (
     <div className="mt-6 sm:mt-8 flex flex-col gap-4 sm:gap-5">
       {/* Mobile Stage Quick Switcher with Indicator Bar (< sm) */}
-      <div className="flex sm:hidden items-center justify-between rounded-2xl border border-panel/80 dark:border-white/10 bg-surface/90 dark:bg-surface/95 p-2 shadow-xs backdrop-blur-md">
+      <div className="flex sm:hidden items-center justify-between rounded-2xl border border-panel/80 site-dark:border-white/10 bg-surface/90 site-dark:bg-surface/95 p-2 shadow-xs backdrop-blur-md">
         <button
           type="button"
           onClick={handlePrev}
           aria-label="Previous methodology phase"
-          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 dark:border-white/10 text-ink hover:bg-panel/40 dark:hover:bg-white/10 active:scale-95 transition-all"
+          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 site-dark:border-white/10 text-ink hover:bg-panel/40 site-dark:hover:bg-white/10 active:scale-95 transition-all"
         >
           <ChevronLeft size={16} />
         </button>
@@ -117,7 +117,7 @@ export function ProcessShowcase() {
                 className={`h-1.5 rounded-full transition-all duration-200 ${
                   i === active
                     ? "w-5 bg-primary"
-                    : "w-1.5 bg-panel/70 dark:bg-zinc-700"
+                    : "w-1.5 bg-panel/70 site-dark:bg-zinc-700"
                 }`}
               />
             ))}
@@ -131,7 +131,7 @@ export function ProcessShowcase() {
           type="button"
           onClick={handleNext}
           aria-label="Next methodology phase"
-          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 dark:border-white/10 text-ink hover:bg-panel/40 dark:hover:bg-white/10 active:scale-95 transition-all"
+          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 site-dark:border-white/10 text-ink hover:bg-panel/40 site-dark:hover:bg-white/10 active:scale-95 transition-all"
         >
           <ChevronRight size={16} />
         </button>
@@ -142,7 +142,7 @@ export function ProcessShowcase() {
         <div
           role="tablist"
           aria-label="Methodology stages"
-          className="flex w-full sm:w-auto items-center gap-1 sm:gap-1.5 rounded-2xl border border-panel/75 dark:border-white/10 bg-surface/90 dark:bg-surface/95 p-1.5 shadow-xs backdrop-blur-md"
+          className="flex w-full sm:w-auto items-center gap-1 sm:gap-1.5 rounded-2xl border border-panel/75 site-dark:border-white/10 bg-surface/90 site-dark:bg-surface/95 p-1.5 shadow-xs backdrop-blur-md"
         >
           {processes.map((proc, index) => {
             const isSelected = index === active;
@@ -155,14 +155,14 @@ export function ProcessShowcase() {
                 onClick={() => setActive(index)}
                 className={`relative flex flex-1 sm:flex-initial items-center justify-center sm:justify-start gap-1.5 sm:gap-2 rounded-xl px-2.5 sm:px-4 py-2 text-xs font-semibold transition-all snap-start ${
                   isSelected
-                    ? "bg-solid text-white dark:bg-primary dark:text-[#002449] shadow-xs"
-                    : "text-copy hover:bg-panel/40 dark:hover:bg-white/10 hover:text-ink"
+                    ? "bg-solid text-white site-dark:bg-primary site-dark:text-[#002449] shadow-xs"
+                    : "text-copy hover:bg-panel/40 site-dark:hover:bg-white/10 hover:text-ink"
                 }`}
               >
                 <span
                   className={`text-[10px] font-bold tabular-nums ${
                     isSelected
-                      ? "text-primary dark:text-[#002449]"
+                      ? "text-primary site-dark:text-[#002449]"
                       : "text-copy"
                   }`}
                 >
@@ -183,10 +183,10 @@ export function ProcessShowcase() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.22 }}
-          className="grid items-center gap-5 sm:gap-6 rounded-2xl sm:rounded-3xl border border-panel/80 dark:border-white/10 bg-surface dark:bg-[#151518] p-4 sm:p-6 lg:p-8 shadow-xs lg:grid-cols-[1fr_1.1fr] lg:gap-10"
+          className="grid items-center gap-5 sm:gap-6 rounded-2xl sm:rounded-3xl border border-panel/80 site-dark:border-white/10 bg-surface site-dark:bg-[#151518] p-4 sm:p-6 lg:p-8 shadow-xs lg:grid-cols-[1fr_1.1fr] lg:gap-10"
         >
           {/* Visual Artwork Showcase */}
-          <div className="relative flex h-40 sm:h-56 lg:h-64 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/10 via-surface to-canvas dark:from-primary/15 dark:via-zinc-900/60 dark:to-zinc-950 border border-panel/60 dark:border-white/10 p-3 sm:p-4">
+          <div className="relative flex h-40 sm:h-56 lg:h-64 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/10 via-surface to-canvas site-dark:from-primary/15 site-dark:via-zinc-900/60 site-dark:to-zinc-950 border border-panel/60 site-dark:border-white/10 p-3 sm:p-4">
             <ProcessArtwork step={current.art} />
           </div>
 
@@ -194,7 +194,7 @@ export function ProcessShowcase() {
           <div className="flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 sm:gap-2.5">
-                <span className="rounded-full bg-primary/20 dark:bg-primary/25 px-2.5 sm:px-3 py-0.5 text-[10px] sm:text-[11px] font-bold text-solid border border-transparent dark:border-primary/30">
+                <span className="rounded-full bg-primary/20 site-dark:bg-primary/25 px-2.5 sm:px-3 py-0.5 text-[10px] sm:text-[11px] font-bold text-solid border border-transparent site-dark:border-primary/30">
                   {current.category}
                 </span>
                 <span className="text-xs font-semibold text-copy">
@@ -215,7 +215,7 @@ export function ProcessShowcase() {
                 {current.deliverables.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-2 rounded-xl border border-panel/60 dark:border-white/10 bg-canvas/60 dark:bg-white/5 px-3 py-1.5 sm:py-2 text-xs font-semibold text-ink"
+                    className="flex items-center gap-2 rounded-xl border border-panel/60 site-dark:border-white/10 bg-canvas/60 site-dark:bg-white/5 px-3 py-1.5 sm:py-2 text-xs font-semibold text-ink"
                   >
                     <Check size={13} className="text-primary shrink-0" />
                     <span className="leading-snug">{item}</span>
@@ -225,10 +225,10 @@ export function ProcessShowcase() {
             </div>
 
             {/* Actions & Next Phase Bar */}
-            <div className="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3.5 border-t border-panel/40 dark:border-white/10">
+            <div className="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3.5 border-t border-panel/40 site-dark:border-white/10">
               <a
                 href={enquiry(current.title + " inquiry")}
-                className="action action-dark rounded-full px-4 py-2 text-xs font-semibold shadow-xs hover:shadow-md dark:bg-primary dark:text-[#002449] w-full sm:w-auto text-center justify-center"
+                className="action action-dark rounded-full px-4 py-2 text-xs font-semibold shadow-xs hover:shadow-md site-dark:bg-primary site-dark:text-[#002449] w-full sm:w-auto text-center justify-center"
               >
                 <span>Consult on this phase</span>
                 <ArrowUpRight size={13} />

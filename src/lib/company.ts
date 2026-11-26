@@ -53,7 +53,7 @@ export const companyName = "Glavia Logistics LLP";
 export const email = "Sureshb@glavialogistic.com";
 export const secondaryEmail = "Suresh@glavialogistic.com";
 export const phone = "9820348813";
-export const address = "D/1802, Ekta Meadows, Siddharth Nagar, Mumbai - 400066";
+export const address = "Mumbai, India";
 export const website = "www.glavialogistic.com";
 
 export const enquiry = (subject: string) =>

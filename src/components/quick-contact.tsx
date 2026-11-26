@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Send, MapPin, CheckCircle2 } from "lucide-react";
-import { email } from "../lib/company";
+import { address, email } from "../lib/company";
 
 export function QuickContact() {
   const [name, setName] = useState("");
@@ -73,7 +73,7 @@ export function QuickContact() {
             <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
             <div>
               <strong className="text-white block font-medium">Mumbai Registered Office</strong>
-              D/1802, Ekta Meadows, Siddharth Nagar, Mumbai - 400066
+              {address}
             </div>
           </div>
         </div>

@@ -68,14 +68,14 @@ export default function Home() {
               ] satisfies { title: string; mode: FreightMode; tag: string; body: string; href: string }[]).map(({ title, mode, tag, body, href }) => (
                 <a key={title} href={href} className="freight-enter motion-card group flex flex-col justify-between rounded-2xl border border-panel bg-surface p-5 hover:border-primary hover:shadow-lg sm:p-6">
                   <div>
-                    <span className="relative grid h-32 place-items-center overflow-hidden rounded-xl bg-primary/20 text-ink">
+                    <span className="relative grid h-32 place-items-center overflow-hidden rounded-xl bg-primary/10 text-ink">
                       <FreightArtwork mode={mode} />
                     </span>
                     <div className="mt-4 flex items-center justify-between gap-2">
-                      <span className="rounded-full bg-primary/25 px-2.5 py-0.5 text-[10px] font-semibold text-ink">
+                      <span className="rounded-full bg-primary/20 px-2.5 py-0.5 text-[10px] font-semibold text-solid">
                         {tag}
                       </span>
-                      <ArrowUpRight size={16} className="card-arrow text-copy group-hover:text-ink shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                      <ArrowUpRight size={16} className="card-arrow text-copy group-hover:text-primary shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
                     </div>
                     <h3 className="mt-2 text-lg font-bold text-ink">
                       {title}
@@ -113,7 +113,7 @@ export default function Home() {
                   }
                 >
                   <div>
-                    <span className="service-visual relative grid h-24 place-items-center overflow-hidden rounded-lg bg-primary/15 text-ink">
+                    <span className="service-visual relative grid h-24 place-items-center overflow-hidden rounded-lg bg-primary/10 text-ink">
                       <ServiceArtwork id={s.id} />
                     </span>
 
@@ -130,7 +130,7 @@ export default function Home() {
                     <a
                       href={enquiry(s.name + " enquiry")}
                       aria-label={"Email Glavia about " + s.name.toLowerCase()}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-ink group-hover:text-blue-600 transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-ink group-hover:text-primary transition-colors"
                     >
                       <span>Enquire</span>
                       <ArrowUpRight size={13} className="card-arrow" aria-hidden="true" />
@@ -168,30 +168,30 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-[#354e70] bg-linear-to-br from-[#1c3352] to-[#101f34] p-5 shadow-sm sm:p-8">
+            <div className="rounded-3xl border border-[#00acc4]/30 bg-gradient-to-br from-[#002449] to-[#041930] p-5 shadow-md sm:p-8">
               <div className="flex items-center gap-4">
-                <span aria-hidden="true" className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary text-sm font-semibold text-[#101827] sm:size-14">
+                <span aria-hidden="true" className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary text-sm font-bold text-[#002449] sm:size-14 shadow-xs">
                   SB
                 </span>
                 <div>
-                  <p className="text-xs font-semibold text-[#d5e2f2]">Director &amp; founder</p>
+                  <p className="text-xs font-semibold text-[#80d8e6]">Director &amp; founder</p>
                   <h3 className="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl">Suresh Bhagwat</h3>
                 </div>
               </div>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#d5e2f2]">
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#d0e6ed]">
                 As Country Brokerage Manager at UPS, Suresh oversaw customs clearance and freight forwarding operations. He brings that experience to Glavia, helping businesses move goods across borders.
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3">
-                <p className="rounded-xl border border-white/20 bg-white/10 p-3 text-xs text-[#d5e2f2] sm:p-4"><strong className="mb-1 block text-3xl tracking-tight text-white">35+</strong> years in logistics and trade</p>
-                <p className="rounded-xl border border-white/20 bg-white/10 p-3 text-xs text-[#d5e2f2] sm:p-4"><strong className="mb-1 block text-3xl tracking-tight text-white">25</strong> years with UPS</p>
+                <p className="rounded-xl border border-white/15 bg-white/10 p-3 text-xs text-[#d0e6ed] sm:p-4"><strong className="mb-1 block text-3xl tracking-tight text-white">35+</strong> years in logistics and trade</p>
+                <p className="rounded-xl border border-white/15 bg-white/10 p-3 text-xs text-[#d0e6ed] sm:p-4"><strong className="mb-1 block text-3xl tracking-tight text-white">25</strong> years with UPS</p>
               </div>
               <a
                 href="https://www.linkedin.com/in/suresh-bhagwat-0b424334"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex min-h-10 flex-wrap items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition-colors hover:border-primary"
+                className="mt-5 inline-flex min-h-10 flex-wrap items-center gap-2 rounded-lg border border-[#00acc4]/40 bg-[#00acc4]/15 px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary hover:text-[#002449]"
               >
-                View Suresh's LinkedIn profile <ArrowUpRight size={15} aria-hidden="true" />
+                View Suresh&apos;s LinkedIn profile <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -203,12 +203,12 @@ export default function Home() {
           <ol className="mt-8 grid gap-5 md:grid-cols-3">
             {steps.map(({ title, body, art }, index) => (
               <li key={art} className="motion-card overflow-hidden rounded-2xl border border-panel/80 bg-surface p-3.5 shadow-xs">
-                <div className="card-visual relative flex h-40 items-center justify-center overflow-hidden rounded-xl bg-linear-to-br from-primary/30 to-panel/30 sm:h-48">
+                <div className="card-visual relative flex h-40 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-panel/20 sm:h-48">
                   <ProcessArtwork step={art} />
                 </div>
                 <div className="px-2 pb-3 pt-5">
                   <h3 className="flex items-baseline gap-2.5 text-lg font-semibold tracking-tight text-ink">
-                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/20 text-xs tabular-nums text-ink" aria-hidden="true">0{index + 1}</span>
+                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/20 text-xs font-bold tabular-nums text-solid" aria-hidden="true">0{index + 1}</span>
                     {title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-copy">{body}</p>
@@ -294,9 +294,6 @@ export default function Home() {
             </a>
             <a href="tel:+919820348813" className="hover:underline">
               +91 98203 48813
-            </a>
-            <a className="break-all hover:underline" href={"mailto:" + email}>
-              {email}
             </a>
             <a href="tel:+919326566589" className="hover:underline">
               +91 93265 66589

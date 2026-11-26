@@ -111,17 +111,17 @@ export default function Home() {
                       <ServiceArtwork id={s.id} />
                     </span>
 
-                    <h3 className="mt-3.5 text-base font-semibold tracking-tight text-ink">
+                    <h3 className="mt-3.5 text-base font-semibold tracking-tight text-ink dark:text-white">
                       {s.name}
                     </h3>
 
-                    <p className="mt-2 text-xs leading-relaxed text-copy">
+                    <p className="mt-2 text-xs leading-relaxed text-copy dark:text-slate-300">
                       {s.description}
                     </p>
 
-                    <div className="mt-3 flex flex-wrap gap-1.5 border-t border-panel/30 pt-2.5">
+                    <div className="mt-3 flex flex-wrap gap-1.5 border-t border-panel/30 dark:border-panel/40 pt-2.5">
                       {s.tags.map((tag) => (
-                        <span key={tag} className="rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-solid">
+                        <span key={tag} className="rounded-md bg-primary/10 dark:bg-primary/20 px-2 py-0.5 text-[10px] font-semibold text-solid dark:text-cyan-200 border border-transparent dark:border-primary/25">
                           {tag}
                         </span>
                       ))}
@@ -132,7 +132,7 @@ export default function Home() {
                     <a
                       href={enquiry(s.name + " enquiry")}
                       aria-label={"Email Glavia about " + s.name.toLowerCase()}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-ink group-hover:text-primary transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-ink dark:text-cyan-300 group-hover:text-primary dark:group-hover:text-white transition-colors"
                     >
                       <span>Enquire</span>
                       <ArrowUpRight size={13} className="card-arrow" aria-hidden="true" />
@@ -202,13 +202,13 @@ export default function Home() {
         <section id="process" className="motion-section wrap py-14 sm:py-16 md:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <p className="eyebrow">Our methodology &amp; processes</p>
-              <h2 className="heading mt-4">
+              <p className="eyebrow dark:text-cyan-300">Our methodology &amp; processes</p>
+              <h2 className="heading mt-4 text-ink dark:text-white">
                 Structured for speed,
                 <br /> compliance, and transparency.
               </h2>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-copy">
+            <p className="max-w-md text-sm leading-relaxed text-copy dark:text-slate-300">
               From supply chain process mapping and IOR representation to time-study optimization and port clearance, we ensure seamless execution at every stage.
             </p>
           </div>

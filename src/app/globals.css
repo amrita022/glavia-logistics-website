@@ -13,8 +13,8 @@
 :root.dark {
   color-scheme: dark;
   --color-canvas: #0d0d0f;
-  --color-ink: #f2f2f4;
-  --color-copy: #c0c0c5;
+  --color-ink: #f8fafc;
+  --color-copy: #cbd5e1;
   --color-panel: #38383e;
   --color-surface: #1b1b1f;
   --color-solid: #34343a;
@@ -27,10 +27,44 @@
 }
 .dark .bg-solid.text-canvas {
   background-color: #151517;
-  color: #f2f2f4;
+  color: #f8fafc;
+}
+.dark .text-solid {
+  color: #89bcff;
 }
 .dark .bg-primary.text-ink { color: #101827; }
 .dark .action-dark { background-color: #89bcff; color: #101827; }
+
+/* Service Artwork Dark Mode Adaptation */
+.dark .service-object [stroke="#002449"] { stroke: #93c5fd; }
+.dark .service-object [fill="#002449"] { fill: #60a5fa; }
+.dark .service-object [fill="#c8dfed"] { fill: #1e3a5f; }
+.dark .service-object [fill="#f2f7fa"] { fill: #1e293b; }
+.dark .service-shadow { fill: #000; opacity: 0.35; }
+
+/* Process Artwork Semantic Classes - Light Mode */
+.proc-stroke { stroke: #002449; }
+.proc-fill-card { fill: #ffffff; }
+.proc-fill-soft { fill: #e8f4f9; }
+.proc-fill-dark { fill: #002449; }
+.proc-text { fill: #002449; }
+.proc-text-muted { fill: #48627e; }
+.proc-accent-fill { fill: #00acc4; }
+.proc-accent-stroke { stroke: #00acc4; }
+.proc-badge-bg { fill: #002449; }
+.proc-badge-text { fill: #ffffff; }
+
+/* Process Artwork Semantic Classes - Dark Mode */
+.dark .proc-stroke { stroke: #94a3b8; }
+.dark .proc-fill-card { fill: #1e293b; }
+.dark .proc-fill-soft { fill: #0f172a; }
+.dark .proc-fill-dark { fill: #38bdf8; }
+.dark .proc-text { fill: #f8fafc; }
+.dark .proc-text-muted { fill: #94a3b8; }
+.dark .proc-accent-fill { fill: #38bdf8; }
+.dark .proc-accent-stroke { stroke: #38bdf8; }
+.dark .proc-badge-bg { fill: #0284c7; }
+.dark .proc-badge-text { fill: #ffffff; }
 .theme-sun, .dark .theme-moon { display: none; }
 .dark .theme-sun { display: block; }
 @layer base {

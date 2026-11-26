@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, ArrowRight, ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ProcessArtwork, type ProcessStep } from "./process-artwork";
 import { enquiry } from "../lib/company";
 
@@ -98,19 +98,19 @@ export function ProcessShowcase() {
 
   return (
     <div className="mt-6 sm:mt-8 flex flex-col gap-4 sm:gap-5">
-      {/* Mobile Stage Quick Switcher with Indicator Bar (< sm) */}
-      <div className="flex sm:hidden items-center justify-between rounded-2xl border border-panel/80 site-dark:border-white/10 bg-surface/90 site-dark:bg-surface/95 p-2 shadow-xs backdrop-blur-md">
+      {/* Compact phase navigation */}
+      <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 lg:hidden rounded-2xl border border-panel/80 site-dark:border-white/10 bg-surface/90 site-dark:bg-surface/95 p-2 shadow-xs backdrop-blur-md">
         <button
           type="button"
           onClick={handlePrev}
           aria-label="Previous methodology phase"
-          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 site-dark:border-white/10 text-ink hover:bg-panel/40 site-dark:hover:bg-white/10 active:scale-95 transition-all"
+          className="flex size-11 items-center justify-center rounded-xl border border-panel/60 site-dark:border-white/10 text-ink hover:bg-panel/40 site-dark:hover:bg-white/10 active:scale-95 transition-all"
         >
           <ChevronLeft size={16} />
         </button>
 
-        <div className="flex flex-col items-center text-center px-2">
-          <div className="flex items-center gap-1.5">
+        <div aria-live="polite" aria-atomic="true" className="flex min-w-0 flex-col items-center text-center">
+          <div aria-hidden="true" className="flex items-center gap-1.5">
             {processes.map((_, i) => (
               <span
                 key={i}
@@ -122,7 +122,7 @@ export function ProcessShowcase() {
               />
             ))}
           </div>
-          <span className="mt-1 text-[11px] font-bold text-ink">
+          <span className="mt-1 text-xs font-semibold leading-snug text-ink">
             {current.step}. {current.shortName}
           </span>
         </div>
@@ -131,18 +131,18 @@ export function ProcessShowcase() {
           type="button"
           onClick={handleNext}
           aria-label="Next methodology phase"
-          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 site-dark:border-white/10 text-ink hover:bg-panel/40 site-dark:hover:bg-white/10 active:scale-95 transition-all"
+          className="flex size-11 items-center justify-center rounded-xl border border-panel/60 site-dark:border-white/10 text-ink hover:bg-panel/40 site-dark:hover:bg-white/10 active:scale-95 transition-all"
         >
           <ChevronRight size={16} />
         </button>
       </div>
 
-      {/* Responsive Horizontal Process Stepper Tabs */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none snap-x snap-mandatory">
+      {/* Desktop process tabs */}
+      <div className="hidden lg:block">
         <div
           role="tablist"
           aria-label="Methodology stages"
-          className="flex w-full sm:w-auto items-center gap-1 sm:gap-1.5 rounded-2xl border border-panel/75 site-dark:border-white/10 bg-surface/90 site-dark:bg-surface/95 p-1.5 shadow-xs backdrop-blur-md"
+          className="inline-flex max-w-full flex-wrap items-center gap-1 sm:gap-1.5 rounded-2xl border border-panel/75 site-dark:border-white/10 bg-surface/90 site-dark:bg-surface/95 p-1.5 shadow-xs backdrop-blur-md"
         >
           {processes.map((proc, index) => {
             const isSelected = index === active;
@@ -153,7 +153,7 @@ export function ProcessShowcase() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setActive(index)}
-                className={`relative flex flex-1 sm:flex-initial items-center justify-center sm:justify-start gap-1.5 sm:gap-2 rounded-xl px-2.5 sm:px-4 py-2 text-xs font-semibold transition-all snap-start ${
+                className={`relative flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-colors ${
                   isSelected
                     ? "bg-solid text-white site-dark:bg-primary site-dark:text-[#002449] shadow-xs"
                     : "text-copy hover:bg-panel/40 site-dark:hover:bg-white/10 hover:text-ink"
@@ -186,7 +186,7 @@ export function ProcessShowcase() {
           className="grid items-center gap-5 sm:gap-6 rounded-2xl sm:rounded-3xl border border-panel/80 site-dark:border-white/10 bg-surface site-dark:bg-[#151518] p-4 sm:p-6 lg:p-8 shadow-xs lg:grid-cols-[1fr_1.1fr] lg:gap-10"
         >
           {/* Visual Artwork Showcase */}
-          <div className="relative flex h-40 sm:h-56 lg:h-64 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/10 via-surface to-canvas site-dark:from-primary/15 site-dark:via-zinc-900/60 site-dark:to-zinc-950 border border-panel/60 site-dark:border-white/10 p-3 sm:p-4">
+          <div className="relative flex h-44 sm:h-56 lg:h-64 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/10 via-surface to-canvas site-dark:from-primary/15 site-dark:via-zinc-900/60 site-dark:to-zinc-950 border border-panel/60 site-dark:border-white/10 p-2 sm:p-4">
             <ProcessArtwork step={current.art} />
           </div>
 
@@ -206,7 +206,7 @@ export function ProcessShowcase() {
                 {current.title}
               </h3>
 
-              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-copy">
+              <p className="mt-2 text-sm leading-relaxed text-copy">
                 {current.summary}
               </p>
 
@@ -225,25 +225,16 @@ export function ProcessShowcase() {
             </div>
 
             {/* Actions & Next Phase Bar */}
-            <div className="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3.5 border-t border-panel/40 site-dark:border-white/10">
+            <div className="mt-5 flex flex-col lg:flex-row lg:items-center justify-between gap-3 pt-3.5 border-t border-panel/40 site-dark:border-white/10">
               <a
                 href={enquiry(current.title + " inquiry")}
-                className="action action-dark rounded-full px-4 py-2 text-xs font-semibold shadow-xs hover:shadow-md site-dark:bg-primary site-dark:text-[#002449] w-full sm:w-auto text-center justify-center"
+                className="action action-dark rounded-full px-4 py-2 text-xs font-semibold shadow-xs hover:shadow-md site-dark:bg-primary site-dark:text-[#002449] w-full lg:w-auto text-center justify-center"
               >
                 <span>Consult on this phase</span>
                 <ArrowUpRight size={13} />
               </a>
 
-              <div className="flex items-center justify-between sm:justify-end gap-3 text-xs">
-                <button
-                  type="button"
-                  onClick={handlePrev}
-                  className="font-medium text-copy hover:text-ink transition-colors flex items-center gap-1 sm:hidden"
-                >
-                  <ArrowLeft size={12} />
-                  <span>Prev</span>
-                </button>
-
+              <div className="hidden items-center justify-end gap-3 text-xs lg:flex">
                 <div className="flex items-center gap-1.5 text-copy">
                   <span>Next:</span>
                   <button

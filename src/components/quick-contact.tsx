@@ -60,6 +60,12 @@ export function QuickContact() {
               >
                 +91 98203 48813
               </a>
+              <a
+                href="tel:+919326566589"
+                className="mt-2 block text-sm font-semibold text-white hover:text-primary transition-colors"
+              >
+                +91 93265 66589
+              </a>
             </div>
           </div>
 
@@ -67,7 +73,7 @@ export function QuickContact() {
             <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
             <div>
               <strong className="text-white block font-medium">Mumbai office</strong>
-              D/1802, Ekta Meadows, Siddharth Nagar, Mumbai 400066, India.
+              Mumbai, India
             </div>
           </div>
         </div>

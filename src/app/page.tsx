@@ -287,13 +287,19 @@ export default function Home() {
             <strong className="text-ink">Mumbai office</strong>
             <p className="flex items-start gap-2">
               <MapPin size={16} className="mt-0.5 shrink-0" />
-              D/1802, Ekta Meadows, Siddharth Nagar, Mumbai 400066, India
+              Mumbai, India
             </p>
             <a className="break-all hover:underline" href={"mailto:" + email}>
               {email}
             </a>
             <a href="tel:+919820348813" className="hover:underline">
               +91 98203 48813
+            </a>
+            <a className="break-all hover:underline" href={"mailto:" + email}>
+              {email}
+            </a>
+            <a href="tel:+919326566589" className="hover:underline">
+              +91 93265 66589
             </a>
             <a href="https://www.glavialogistic.com" className="hover:underline">www.glavialogistic.com</a>
           </address>

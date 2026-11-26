@@ -8,8 +8,6 @@ const modes = [
   {
     id: "sea",
     name: "Sea",
-    badge: "Ocean Freight",
-    tagline: "Direct Port Delivery (DPD) & Container Gantry Handover",
     icon: Ship,
     frame: [-12, -36, 714, 350],
     alt: "At a container port, a gantry lifts cargo from a trailer onto a docked ship.",
@@ -17,8 +15,6 @@ const modes = [
   {
     id: "road",
     name: "Road",
-    badge: "Surface Express",
-    tagline: "Cross-Docking Hub & Domestic Linehaul Transit",
     icon: Truck,
     frame: [-8, -8, 776, 361],
     alt: "At a warehouse, a worker moves a parcel to a waiting truck as traffic passes.",
@@ -26,8 +22,6 @@ const modes = [
   {
     id: "air",
     name: "Air",
-    badge: "Priority Air",
-    tagline: "Expedited Ramp Loading & Scheduled International Cargo",
     icon: Plane,
     frame: [65, -49, 847, 365],
     alt: "Ground crew load a cargo aircraft and clear the apron before takeoff.",
@@ -258,30 +252,11 @@ export function Hero() {
         className="min-h-[clamp(14rem,min(30vw,40svh),32rem)] flex-1 max-md:order-last"
       />
 
-      {/* Bottom Scene Controls & Real-Time Mode Details */}
+      {/* Bottom Scene Controls */}
       <div
         ref={controls}
-        className="flex flex-col items-center sm:items-start w-full px-4 pt-2 pb-5 sm:px-8 md:pb-7 lg:px-12 gap-2"
+        className="flex flex-col items-center sm:items-start w-full px-4 pt-2 pb-5 sm:px-8 md:pb-7 lg:px-12"
       >
-        {/* Dynamic Scene Caption Badge */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={mode.id}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            transition={{ duration: 0.25 }}
-            className="flex items-center gap-2 rounded-lg bg-surface/90 border border-panel/75 px-3 py-1 text-xs text-copy shadow-xs backdrop-blur-md"
-          >
-            <span className="font-semibold text-solid flex items-center gap-1.5">
-              <span className="size-1.5 rounded-full bg-primary inline-block" />
-              {mode.badge}
-            </span>
-            <span className="hidden sm:inline text-panel">|</span>
-            <span className="hidden sm:inline">{mode.tagline}</span>
-          </motion.div>
-        </AnimatePresence>
-
         {/* Toolbar Switcher with Live Active Progress Bar */}
         <div className="flex w-fit max-w-full items-center gap-1 rounded-2xl border border-panel/75 bg-surface/90 backdrop-blur-md p-1 shadow-sm sm:gap-2">
           <div role="group" aria-label="Transport scene" className="flex items-center gap-1">

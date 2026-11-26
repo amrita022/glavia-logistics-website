@@ -4,6 +4,7 @@
   --color-surface: #ffffff;
   --color-solid: #002449;
   --color-primary: #00acc4;
+  --color-accent-text: #006674;
   --color-ink: #002449;
   --color-panel: #d0e4ee;
   --color-canvas: #f2f7fa;
@@ -19,6 +20,7 @@
   --color-surface: #1b1b1f;
   --color-solid: #34343a;
   --color-primary: #89bcff;
+  --color-accent-text: #a7d0ff;
   --color-amber-600: #ffce80;
   --color-emerald-600: #74deb6;
 }
@@ -64,7 +66,7 @@
 .dark .proc-accent-fill { fill: #38bdf8; }
 .dark .proc-accent-stroke { stroke: #38bdf8; }
 .dark .proc-badge-bg { fill: #0284c7; }
-.dark .proc-badge-text { fill: #ffffff; }
+.dark .proc-badge-text { fill: #061828; }
 .theme-sun, .dark .theme-moon { display: none; }
 .dark .theme-sun { display: block; }
 @layer base {

@@ -104,7 +104,7 @@ export function ProcessShowcase() {
           type="button"
           onClick={handlePrev}
           aria-label="Previous methodology phase"
-          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 dark:border-white/10 text-ink dark:text-white hover:bg-panel/40 dark:hover:bg-white/10 active:scale-95 transition-all"
+          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 dark:border-white/10 text-ink hover:bg-panel/40 dark:hover:bg-white/10 active:scale-95 transition-all"
         >
           <ChevronLeft size={16} />
         </button>
@@ -122,7 +122,7 @@ export function ProcessShowcase() {
               />
             ))}
           </div>
-          <span className="mt-1 text-[11px] font-bold text-ink dark:text-white">
+          <span className="mt-1 text-[11px] font-bold text-ink">
             {current.step}. {current.shortName}
           </span>
         </div>
@@ -131,7 +131,7 @@ export function ProcessShowcase() {
           type="button"
           onClick={handleNext}
           aria-label="Next methodology phase"
-          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 dark:border-white/10 text-ink dark:text-white hover:bg-panel/40 dark:hover:bg-white/10 active:scale-95 transition-all"
+          className="flex size-9 items-center justify-center rounded-xl border border-panel/60 dark:border-white/10 text-ink hover:bg-panel/40 dark:hover:bg-white/10 active:scale-95 transition-all"
         >
           <ChevronRight size={16} />
         </button>
@@ -156,14 +156,14 @@ export function ProcessShowcase() {
                 className={`relative flex flex-1 sm:flex-initial items-center justify-center sm:justify-start gap-1.5 sm:gap-2 rounded-xl px-2.5 sm:px-4 py-2 text-xs font-semibold transition-all snap-start ${
                   isSelected
                     ? "bg-solid text-white dark:bg-primary dark:text-[#002449] shadow-xs"
-                    : "text-copy dark:text-slate-300 hover:bg-panel/40 dark:hover:bg-white/10 hover:text-ink dark:hover:text-white"
+                    : "text-copy hover:bg-panel/40 dark:hover:bg-white/10 hover:text-ink"
                 }`}
               >
                 <span
                   className={`text-[10px] font-bold tabular-nums ${
                     isSelected
                       ? "text-primary dark:text-[#002449]"
-                      : "text-copy dark:text-slate-400"
+                      : "text-copy"
                   }`}
                 >
                   {proc.step}
@@ -194,19 +194,19 @@ export function ProcessShowcase() {
           <div className="flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 sm:gap-2.5">
-                <span className="rounded-full bg-primary/20 dark:bg-primary/25 px-2.5 sm:px-3 py-0.5 text-[10px] sm:text-[11px] font-bold text-solid dark:text-cyan-200 border border-transparent dark:border-primary/30">
+                <span className="rounded-full bg-primary/20 dark:bg-primary/25 px-2.5 sm:px-3 py-0.5 text-[10px] sm:text-[11px] font-bold text-solid border border-transparent dark:border-primary/30">
                   {current.category}
                 </span>
-                <span className="text-xs font-semibold text-copy dark:text-slate-400">
+                <span className="text-xs font-semibold text-copy">
                   Phase {current.step} of 05
                 </span>
               </div>
 
-              <h3 className="mt-2 text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-ink dark:text-white">
+              <h3 className="mt-2 text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-ink">
                 {current.title}
               </h3>
 
-              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-copy dark:text-slate-200">
+              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-copy">
                 {current.summary}
               </p>
 
@@ -215,7 +215,7 @@ export function ProcessShowcase() {
                 {current.deliverables.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-2 rounded-xl border border-panel/60 dark:border-white/10 bg-canvas/60 dark:bg-white/5 px-3 py-1.5 sm:py-2 text-xs font-semibold text-ink dark:text-slate-100"
+                    className="flex items-center gap-2 rounded-xl border border-panel/60 dark:border-white/10 bg-canvas/60 dark:bg-white/5 px-3 py-1.5 sm:py-2 text-xs font-semibold text-ink"
                   >
                     <Check size={13} className="text-primary shrink-0" />
                     <span className="leading-snug">{item}</span>
@@ -238,18 +238,18 @@ export function ProcessShowcase() {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="font-medium text-copy dark:text-slate-400 hover:text-ink dark:hover:text-white transition-colors flex items-center gap-1 sm:hidden"
+                  className="font-medium text-copy hover:text-ink transition-colors flex items-center gap-1 sm:hidden"
                 >
                   <ArrowLeft size={12} />
                   <span>Prev</span>
                 </button>
 
-                <div className="flex items-center gap-1.5 text-copy dark:text-slate-300">
+                <div className="flex items-center gap-1.5 text-copy">
                   <span>Next:</span>
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="font-semibold text-ink dark:text-cyan-300 hover:text-primary dark:hover:text-white transition-colors flex items-center gap-1"
+                    className="font-semibold text-ink hover:text-accent-text transition-colors flex items-center gap-1"
                   >
                     {processes[(active + 1) % processes.length].shortName}
                     <ArrowRight size={12} />

@@ -45,7 +45,7 @@ export function QuickContact() {
               >
                 {email}
               </a>
-              <p className="mt-1 text-xs text-panel/70">
+              <p className="mt-1 text-xs text-panel/85">
                 Quotes & documentation intake
               </p>
             </div>
@@ -98,7 +98,7 @@ export function QuickContact() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Acme Corp / Priya Sharma"
-                className="mt-1.5 w-full rounded-xl border border-panel/30 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-panel/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="mt-1.5 w-full rounded-xl border border-panel/30 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-panel/80 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
 
@@ -113,7 +113,7 @@ export function QuickContact() {
                 value={contactInfo}
                 onChange={(e) => setContactInfo(e.target.value)}
                 placeholder="e.g. priya@acme.com or +91 98765 43210"
-                className="mt-1.5 w-full rounded-xl border border-panel/30 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-panel/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="mt-1.5 w-full rounded-xl border border-panel/30 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-panel/80 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
 
@@ -128,7 +128,7 @@ export function QuickContact() {
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
                 placeholder="Cargo description, origin, destination, and preferred timing"
-                className="mt-1.5 w-full rounded-xl border border-panel/30 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-panel/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+                className="mt-1.5 w-full rounded-xl border border-panel/30 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-panel/80 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
               />
             </div>
 
@@ -145,7 +145,7 @@ export function QuickContact() {
               </button>
             )}
 
-            <p className="text-center text-[11px] text-panel/60">
+            <p className="text-center text-[11px] text-panel/85">
               Opens your preferred email client with this inquiry pre-filled.
             </p>
           </form>

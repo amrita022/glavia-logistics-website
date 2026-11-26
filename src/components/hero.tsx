@@ -236,7 +236,7 @@ export function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border border-panel bg-surface/85 px-5 py-2.5 text-xs sm:text-sm font-semibold text-ink shadow-xs backdrop-blur-sm transition-all hover:border-primary hover:bg-surface hover:text-primary hover:scale-[1.02] active:scale-[.98]"
+            className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border border-panel bg-surface/85 px-5 py-2.5 text-xs sm:text-sm font-semibold text-ink shadow-xs backdrop-blur-sm transition-all hover:border-primary hover:bg-surface hover:text-accent-text hover:scale-[1.02] active:scale-[.98]"
           >
             <span>Consultation</span>
             <ArrowUpRight size={14} />

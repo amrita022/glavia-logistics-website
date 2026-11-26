@@ -33,7 +33,7 @@ export function Faq() {
         {questions.map((item) => (
           <Accordion.Item value={item.q} key={item.q} className="faq-row rounded-xl border border-panel/80 bg-surface px-4 sm:px-5">
             <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-4 text-left text-base font-semibold tracking-tight text-ink hover:text-primary transition-colors sm:text-lg">
+              <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-4 text-left text-base font-semibold tracking-tight text-ink hover:text-accent-text transition-colors sm:text-lg">
                 <span>{item.q}</span>
                 <ChevronDown
                   size={18}

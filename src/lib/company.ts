@@ -12,67 +12,40 @@ export const services = [
     name: "Freight forwarding",
     icon: Container,
     description:
-      "Global ocean and air cargo coordination across major trade lanes with carrier booking.",
-    details: [
-      "International freight coordination",
-      "Air and sea freight solutions, as applicable",
-      "Import and export shipment support",
-      "Shipment coordination and documentation",
-    ],
+      "International ocean and air cargo coordination across worldwide trade corridors.",
+    tags: ["Air & Sea Freight", "Carrier Booking", "Documentation"],
   },
   {
     id: "customs",
     name: "Customs clearance",
     icon: FileCheck2,
     description:
-      "End-to-end ICEGATE EDI filing, tariff classification, and rapid on-ground port clearance.",
-    details: [
-      "Import and export clearance coordination",
-      "Customs documentation support",
-      "Coordination with relevant stakeholders",
-      "Support with applicable regulatory requirements",
-    ],
+      "End-to-end ICEGATE EDI filing, tariff classification, and expedited port clearance.",
+    tags: ["ICEGATE EDI", "Tariff Classification", "DPD Clearance"],
   },
   {
     id: "integrated",
-    name: "Integrated logistics support",
+    name: "Integrated logistics",
     icon: Boxes,
     description:
-      "Multimodal supply chain planning, cross-docking, and automated milestone updates.",
-    details: [
-      "Shipment planning and coordination",
-      "Import and export logistics support",
-      "Communication and shipment updates",
-      "Customer-focused logistics coordination",
-    ],
+      "Multimodal supply chain planning, cross-docking, and real-time milestone tracking.",
+    tags: ["Supply Chain Planning", "Cross-Docking", "Milestone Tracking"],
   },
   {
     id: "express",
-    name: "Express & courier services",
+    name: "Express & courier",
     icon: PackageCheck,
     description:
       "Time-definite door-to-door courier dispatch, air hub handling, and priority delivery.",
-    details: [
-      "Door to Door shipments",
-      "Clearances at import and export ports",
-      "Tracking and communication",
-      "Customer-focused solutions for E-commerce businesses",
-    ],
+    tags: ["Door-to-Door", "Port Handling", "E-Commerce Priority"],
   },
   {
     id: "consultation",
-    name: "Consultation & process improvements",
+    name: "Consultation & IOR",
     icon: Workflow,
     description:
-      "IOR compliance, process mapping, flow time studies, and USA/EU trade regulatory advisory.",
-    details: [
-      "International Business Consultation",
-      "USA and Europe Export and Import consultation",
-      "IOR (Importer of Record) compliance",
-      "Process Improvement & Flow Mapping",
-      "Process Time Study & Bottleneck Resolution",
-      "Project implementation",
-    ],
+      "IOR representation, supply chain process mapping, time studies, and US/EU advisory.",
+    tags: ["IOR Importer of Record", "Process Mapping", "Time Study Optimization"],
   },
 ] as const;
 

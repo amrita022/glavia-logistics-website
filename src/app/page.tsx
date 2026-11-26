@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { FreightArtwork, type FreightMode } from "../components/freight-artwork";
 import { CardEntrance } from "../components/card-entrance";
-import { ProcessArtwork, type ProcessStep } from "../components/process-artwork";
+import { ProcessShowcase } from "../components/process-showcase";
 import { ServiceArtwork } from "../components/service-artwork";
 import { Brand } from "../components/brand";
 import { Navigation } from "../components/navigation";
@@ -15,44 +15,6 @@ import { Hero } from "../components/hero";
 import { QuickContact } from "../components/quick-contact";
 import { Faq } from "../components/faq";
 import { email, enquiry, services, address, phone } from "../lib/company";
-
-const processes = [
-  {
-    title: "Process Mapping & Flow Design",
-    category: "Workflow Optimization",
-    body: "We map every step of your international supply chain—from origin factory dispatch and documentation to terminal gates and consignee delivery—eliminating procedural bottlenecks.",
-    art: "mapping" as ProcessStep,
-    highlights: ["Supply chain flow mapping", "Standard operating procedures (SOP)", "Handoff synchronization"],
-  },
-  {
-    title: "IOR (Importer of Record) & Trade Compliance",
-    category: "Regulatory Governance",
-    body: "Acting as your compliant import/export regulatory partner for shipments into India, USA, and Europe, managing customs duty assessment, tax declarations, and statutory filings.",
-    art: "ior" as ProcessStep,
-    highlights: ["ICEGATE & CBP/HMRC compliance", "Tariff classification & valuation", "Statutory tax & duty advisory"],
-  },
-  {
-    title: "Process Time Study & Dwell Reduction",
-    category: "Cycle-Time Compression",
-    body: "Rigorous milestone analysis across customs appraisal, examination yards, and ramp handovers to minimize turnaround times and avoid container demurrage and detention charges.",
-    art: "timestudy" as ProcessStep,
-    highlights: ["Port dwell-time reduction", "Demurrage risk control", "Direct Port Delivery (DPD) flows"],
-  },
-  {
-    title: "Customs Brokerage & Port Clearance",
-    category: "Clearance Execution",
-    body: "Electronic EDI filing, ICEGATE documentation, and port clearance coordination with customs officials and stakeholders for expedited cargo release.",
-    art: "customs" as ProcessStep,
-    highlights: ["Electronic EDI pre-filing", "On-ground port examination", "Stakeholder coordination"],
-  },
-  {
-    title: "Multimodal Freight Coordination",
-    category: "Global Movement",
-    body: "Seamless air, ocean, and domestic transport solutions with carrier booking, tracking updates, and proactive communication across worldwide trade corridors.",
-    art: "forwarding" as ProcessStep,
-    highlights: ["Air & ocean freight coordination", "Door-to-door courier routing", "Proactive milestone updates"],
-  },
-] as const;
 
 export default function Home() {
   return (
@@ -157,14 +119,13 @@ export default function Home() {
                       {s.description}
                     </p>
 
-                    <ul className="mt-3 grid gap-1 border-t border-panel/30 pt-2.5 text-[11px] text-copy">
-                      {s.details.map((point) => (
-                        <li key={point} className="flex items-start gap-1.5 leading-snug">
-                          <span className="size-1 rounded-full bg-primary mt-1.5 shrink-0" />
-                          <span>{point}</span>
-                        </li>
+                    <div className="mt-3 flex flex-wrap gap-1.5 border-t border-panel/30 pt-2.5">
+                      {s.tags.map((tag) => (
+                        <span key={tag} className="rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-solid">
+                          {tag}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-panel/40">
@@ -252,50 +213,7 @@ export default function Home() {
             </p>
           </div>
 
-          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {processes.map(({ title, category, body, art, highlights }, index) => (
-              <li
-                key={title}
-                className={
-                  "motion-card flex flex-col justify-between overflow-hidden rounded-2xl border border-panel/80 bg-surface p-4.5 shadow-xs transition hover:border-primary/80 hover:shadow-md " +
-                  (index >= 3 ? "sm:col-span-1" : "")
-                }
-              >
-                <div>
-                  <div className="card-visual relative flex h-40 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-panel/20 sm:h-44">
-                    <ProcessArtwork step={art} />
-                  </div>
-                  <div className="pt-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-bold text-solid">
-                        {category}
-                      </span>
-                      <span className="text-xs font-bold text-primary tabular-nums">
-                        0{index + 1}
-                      </span>
-                    </div>
-                    <h3 className="mt-2.5 text-base sm:text-lg font-bold tracking-tight text-ink">
-                      {title}
-                    </h3>
-                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-copy">
-                      {body}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-panel/40">
-                  <ul className="grid gap-1.5 text-[11px] font-medium text-copy">
-                    {highlights.map((h) => (
-                      <li key={h} className="flex items-center gap-1.5">
-                        <Check size={12} className="text-primary shrink-0" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <ProcessShowcase />
         </section>
 
         {/* 8. FAQ Section */}

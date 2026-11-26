@@ -14,7 +14,7 @@
  <stop stop-color="#fff" /><stop offset=".28" stop-color="#edf5fc" /><stop offset=".69" stop-color="#c7ddeb" /><stop offset=".88" stop-color="#a3bfd2" /><stop offset="1" stop-color="#819fb6" /></linearGradient></defs>
 <style>
 /* A single apron turnaround. All actor timings are percentages of this clock. */
-:root { --turnaround: 22s; }
+:root { --turnaround: 14s; }
 polygon { stroke:#344a61;stroke-width:.57;stroke-linejoin:round;paint-order:stroke fill }
 .fuselage polygon { stroke:none }
 .cycle { animation-duration:var(--turnaround);animation-iteration-count:infinite;animation-timing-function:linear }

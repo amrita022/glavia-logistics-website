@@ -35,7 +35,7 @@
 </defs><style>
 polygon{stroke:#344a61;stroke-width:.55;stroke-linejoin:round;paint-order:stroke fill}
 #freight path:not(:last-child){stroke:#8d733e;stroke-width:.65;stroke-linejoin:round}
-.voyage,.gantry-trolley,.hook-block,.wire,.cargo-lift,.cargo-deck,.cargo-trailer,.hauler,.wake,.signaller-arm{animation-duration:27s;animation-iteration-count:infinite;animation-fill-mode:both}
+.voyage,.gantry-trolley,.hook-block,.wire,.cargo-lift,.cargo-deck,.cargo-trailer,.hauler,.wake,.signaller-arm{animation-duration:16s;animation-iteration-count:infinite;animation-fill-mode:both}
 .voyage{animation-name:sailing}
 @keyframes sailing{0%,53%{transform:translate(0,0);animation-timing-function:cubic-bezier(.56,.02,.83,.7)}80%{transform:translate(-470px,216px)}80.01%{transform:translate(520px,-239.2px);animation-timing-function:cubic-bezier(.23,.48,.34,1)}100%{transform:translate(0,0)}}
 .wake{animation-name:thrust}
@@ -59,8 +59,8 @@ polygon{stroke:#344a61;stroke-width:.55;stroke-linejoin:round;paint-order:stroke
 .paused *{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}.cargo-lift,.cargo-deck,.wake{opacity:0}.wire{transform:scaleY(26)}.hook-block{transform:translateY(26px)}}
 
-.tugboat{animation:tug-escort 27s infinite both;transform-origin:0 0}
-.tug-wake{animation:thrust 27s infinite both}
+.tugboat{animation:tug-escort 16s infinite both;transform-origin:0 0}
+.tug-wake{animation:thrust 16s infinite both}
 .tug-bob{animation:bob 3.2s ease-in-out infinite alternate}
 @keyframes tug-escort{0%,53%{transform:translate(168px,66px);animation-timing-function:cubic-bezier(.56,.02,.83,.7)}80%{transform:translate(-302px,282px)}80.01%{transform:translate(688px,-173.2px);animation-timing-function:cubic-bezier(.23,.48,.34,1)}100%{transform:translate(168px,66px)}}
 @keyframes bob{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(-1.8px) rotate(1.2deg)}}
@@ -78,7 +78,7 @@ polygon{stroke:#344a61;stroke-width:.55;stroke-linejoin:round;paint-order:stroke
 @keyframes hazard-pulse{0%,20%,100%{opacity:.2}10%{opacity:1}}
 
 
-.bow-spray{animation:spray-burst 27s infinite both;transform-origin:-22px 30px}
+.bow-spray{animation:spray-burst 16s infinite both;transform-origin:-22px 30px}
 @keyframes spray-burst{0%,52%,100%{opacity:0;transform:scale(.7)}66%,86%{opacity:.95;transform:scale(1.2)}96%{opacity:.15}}
 .barrier-arm{animation:barrier-cycle 12s ease-in-out infinite alternate;transform-origin:0 0}
 @keyframes barrier-cycle{0%,40%{transform:rotate(0deg)}60%,100%{transform:rotate(-65deg)}}

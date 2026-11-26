@@ -1,47 +1,65 @@
 # Glavia Logistics LLP
 
-The website presents Glavia's freight forwarding, customs clearance, courier, and trade advisory services. Visitors can explore animated Road, Sea, and Air freight scenes, review the shipment process, and contact the team by email.
+**Connecting markets. Moving business forward.**
 
-[Production website](https://glavia-logistics21.vercel.app)
+Glavia Logistics LLP's website introduces its freight forwarding, customs clearance, integrated logistics, express courier, and trade consultation services. An interactive hero lets visitors switch between an animated container port, a warehouse yard, and an air cargo terminal.
 
-## Local development
+[Visit the live website](https://glavia-logistics21.vercel.app)
 
-Use Node.js 20.9 or later and npm.
+## Explore the site
+
+- **Interactive freight scenes** — Switch between Road, Sea, and Air, or pause the animation at any time. The hero adapts its framing to smaller screens and respects the device's reduced-motion preference.
+- **Light and dark themes** — The site follows the device preference on a first visit and remembers the visitor's choice after they use the theme toggle.
+- **Company and service information** — Browse freight options, learn about Glavia and its founder, and find answers to common shipment and customs questions.
+- **Direct enquiries** — Call or email Glavia from the contact section. The enquiry form opens a pre-filled draft in the visitor's email app.
+
+## Run locally
+
+Use Node.js 20.9 or later and npm. From the repository root, run:
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Open [localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Checks and production build
+## Build and preview
 
 ```bash
 npm run lint
 npm run build
 ```
 
-The build runs TypeScript checks and generates the static site in `out/`. To preview the export with Python 3, run the following command and open [localhost:8080](http://localhost:8080).
+The production build runs TypeScript checks and writes the static export to `out/`. To preview it locally with Python 3:
 
 ```bash
 python -m http.server 8080 --directory out
 ```
 
-## Project structure
+Open [http://localhost:8080](http://localhost:8080).
 
-| Path | Purpose |
+## Project guide
+
+The site uses Next.js App Router, TypeScript, Tailwind CSS, Motion, and Radix UI. The freight scenes are SVGs with CSS animations.
+
+| Path | What to edit |
 | --- | --- |
-| `src/app/page.tsx` | Homepage sections, including services, company profile, and shipment process |
-| `src/app/globals.css` | Shared styles, light and dark themes, and scroll animations |
-| `src/components/hero.tsx` | Freight scene selection, responsive framing, and animation controls |
-| `public/scenes/` | Animated freight illustrations for Road, Sea, and Air |
-| `src/components/faq.tsx` | Expandable frequently asked questions |
-| `src/lib/company.ts` | Services, contact details, and enquiry links |
-| `public/information.md` | Company reference for copy and claims |
+| `src/app/page.tsx` | Homepage layout and section copy |
+| `src/app/globals.css` | Theme colors, shared styles, and scroll animations |
+| `src/components/hero.tsx` | Scene switching, framing, and playback controls |
+| `public/scenes/` | Road, Sea, and Air artwork and animation timelines |
+| `src/components/faq.tsx` | FAQ questions and answers |
+| `src/components/quick-contact.tsx` | Contact section and email enquiry form |
+| `src/lib/company.ts` | Shared service data and enquiry links |
+| `public/information.md` | Company reference for published copy and service claims |
 
-The frontend uses Next.js App Router, TypeScript, Tailwind CSS, Motion, and Radix UI.
+## Deploy to Vercel
 
-## Deployment
+Import the repository into Vercel with the Next.js framework preset, or run the following from a checkout linked to the existing Vercel project:
 
-Vercel builds the site from the connected GitHub repository. A GitHub push updates the production URL after Vercel successfully deploys the commit. Use the deployment dashboard to confirm the commit SHA and check the public URL before sharing an update. The `out/` directory can also be served by a static host.
+```bash
+vercel deploy --prod
+```
+
+Confirm the production deployment is ready in Vercel, then check the public URL for the changes. The generated `out/` directory can also be deployed to another static host.
